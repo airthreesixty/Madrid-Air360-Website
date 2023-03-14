@@ -34,5 +34,5 @@ yarn preview
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
 
-## To access to the website
+## To access the website
 Visit [here](https://airthreesixty.github.io/Madrid-Air360-Website/)
