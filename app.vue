@@ -1,5 +1,3 @@
 <template>
-  <div>
-    a
-  </div>
+  <TheHeader></TheHeader>
 </template>
