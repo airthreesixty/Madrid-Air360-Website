@@ -1,0 +1,8 @@
+{
+  "name": "strapi-air360",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/airthreesixty/Madrid-Air360-Website",
+  "author": "koki <koki.takahashi@scalefast.com>",
+  "license": "MIT"
+}
