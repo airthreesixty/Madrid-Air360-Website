@@ -60,7 +60,7 @@
               </NuxtLink>
             </li> -->
           <li class="py-2">
-            <NuxtLink to="/">
+            <NuxtLink to="/why-air360">
               <div
                 class="menu__link"
               >
@@ -69,7 +69,7 @@
             </NuxtLink>
           </li>
           <li class="py-2">
-            <NuxtLink to="/">
+            <NuxtLink to="/blog">
               <div
                 class="menu__link"
               >
