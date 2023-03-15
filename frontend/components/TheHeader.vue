@@ -106,18 +106,32 @@
         </ul>
       </div>
     </div>
+    <!-- <div>
+      <div v-for="review in reviews" :key="review.title">
+        <h2>{{ review.title }}</h2>
+        <p>{{ review.rating }}</p>
+        <p>{{ review.body }}</p>
+      </div>
+    </div> -->
+    <pre>{{ data }}</pre>
   </nav>
 </template>
 
 <script setup lang="ts">
 import { allReviewsQuery } from '~~/graphql/queries'
+
+// const { result } = useQuery(allReviewsQuery)
+// const reviews = result.value?.reviews?.data ?? []
+// console.log(result)
+// console.log(allReviewsQuery)
+const variables = { limit: 5 }
+const { data } = await useAsyncQuery(allReviewsQuery, variables)
+console.log(data)
 const isActive = ref(false)
 
 const toggleMenu = () => {
   isActive.value = !isActive.value
 }
-
-console.log(allReviewsQuery)
 </script>
 
 <style lang="postcss">

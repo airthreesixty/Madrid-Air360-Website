@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
 export const allReviewsQuery = gql`
-query allReviewsQuery  {
+query allReviewsQuery {
   reviews {
     data {
       attributes {
@@ -11,5 +11,4 @@ query allReviewsQuery  {
       }
     }
   }
-}
-`
+}`
