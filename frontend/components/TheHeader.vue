@@ -110,11 +110,14 @@
 </template>
 
 <script setup lang="ts">
+import { allReviewsQuery } from '~~/graphql/queries'
 const isActive = ref(false)
 
 const toggleMenu = () => {
   isActive.value = !isActive.value
 }
+
+console.log(allReviewsQuery)
 </script>
 
 <style lang="postcss">
