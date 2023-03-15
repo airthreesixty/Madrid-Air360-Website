@@ -120,6 +120,9 @@ const toggleMenu = () => {
 <style lang="postcss">
 .menu__link {
   @apply block text-[20px] lg:text-base py-2 pl-3 pr-4 text-black-600 rounded transition ease-in-out duration-300 hover:bg-gray-100 md:after:absolute md:after:top-0 md:hover:after:block md:hover:bg-transparent md:border-0 md:hover:text-secondary-600 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent;
+  .router-link-exact-active & {
+    @apply text-secondary-600;
+  }
 }
 /* md:after:absolute md:after:top-0 md:hover:after:block md:hover:bg-transparent md:border-0 md:hover:text-secondary-600 md:after:content-[''] md:after:h-[4px] md:after:w-full md:after:static md:p-0 dark:text-gray-400 md:dark:hover:text-white md:after:bg-secondary-600 md:after:mt-[15px] dark:hover:bg-gray-700 */
 </style>
