@@ -41,25 +41,6 @@
         <ul
           class="flex flex-col p-4 mt-4 border items-center border-none lg:flex-row lg:space-x-8 lg:mt-0 lg:text-base lg:font-medium lg:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
         >
-          <!-- <li class="py-2">
-              <NuxtLink :to="$localePath('/test')">
-                <div
-                  class="menu__link"
-                >
-                  Test Link
-                </div>
-              </NuxtLink>
-            </li>
-            <li class="py-2">
-              <NuxtLink :to="$localePath('/why-air360')">
-                <div
-                  class="menu__link"
-                >
-                  Why Air360
-                </div>
-              </NuxtLink>
-            </li> -->
-
           <li v-for="review in reviews" :key="review" class="menu__link">
             <NuxtLink v-if="review.attributes.url" :to="review.attributes.url">
               {{ review["attributes"]["title"] }}
@@ -68,42 +49,6 @@
               {{ review["attributes"]["title"] }}
             </NuxtLink>
           </li>
-
-          <!-- <li class="py-2">
-            <NuxtLink to="/why-air360">
-              <div
-                class="menu__link"
-              >
-                Why Air360?
-              </div>
-            </NuxtLink>
-          </li>
-          <li class="py-2">
-            <NuxtLink to="/blog">
-              <div
-                class="menu__link"
-              >
-                Inspiration
-              </div>
-            </NuxtLink>
-          </li> -->
-          <!-- <li class="py-2">
-              <NuxtLink :to="$localePath('/price')">
-                <div
-                  class="menu__link"
-                >
-                  {{ $t("pricing") }}
-                </div>
-              </NuxtLink>
-            </li> -->
-          <!-- <li class="py-2">
-            <a
-              href="https://beta.air360.io/"
-              class="menu__link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >Login</a>
-          </li> -->
           <li class="py-2">
             <NuxtLink to="/">
               <button
@@ -116,35 +61,17 @@
         </ul>
       </div>
     </div>
-    <!-- <div>
-      <div v-for="review in reviews" :key="review.title">
-        <h2>{{ review.title }}</h2>
-        <p>{{ review.rating }}</p>
-        <p>{{ review.body }}</p>
-      </div>
-    </div> -->
     <!-- <pre>{{ data }}</pre> -->
   </nav>
 </template>
 
 <script setup lang="ts">
+import type { Review } from '../interfaces/type'
 import { allReviewsQuery } from '~~/graphql/queries'
 
-// const { result } = useQuery(allReviewsQuery)
-// const reviews = result.value?.reviews?.data ?? []
-// console.log(result)
-// console.log(allReviewsQuery)
 const reviews = ref([])
 
-// onMounted(async () => {
-//   const variables = { limit: 5 }
-//   const { data } = await useAsyncQuery(allReviewsQuery, variables)
-//   console.log(data)
-//   reviews.value = data.value.reviews.data
-// })
-
-const variables = { limit: 5 }
-const { data } = await useAsyncQuery(allReviewsQuery, variables)
+const { data } = await useAsyncQuery<Review>(allReviewsQuery)
 if (data.value?.reviews) {
   reviews.value = data.value.reviews.data
   console.log(data)
