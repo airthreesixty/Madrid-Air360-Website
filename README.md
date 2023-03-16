@@ -1,9 +1,38 @@
-# How to run
+# Nuxt 3 Minimal Starter
 
-## Frontend
-1. cd frontend
-2. yarn dev
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
 
-## Backend
-1. cd backend
-2. yarn start or develop(for the development)
+## Setup
+
+Make sure to install the dependencies:
+
+```bash
+# yarn
+yarn install
+
+## Development Server
+
+Start the development server on http://localhost:3000
+
+```bash
+yarn dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+yarn build
+```
+
+Locally preview production build:
+
+```bash
+yarn preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+## To access the website
+Visit [here](https://airthreesixty.github.io/Madrid-Air360-Website/)
