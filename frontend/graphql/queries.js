@@ -8,6 +8,7 @@ query allReviewsQuery {
         title
         rating
         body
+        url
       }
     }
   }

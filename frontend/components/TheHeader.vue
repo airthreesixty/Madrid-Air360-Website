@@ -59,7 +59,14 @@
                 </div>
               </NuxtLink>
             </li> -->
-          <li class="py-2">
+
+          <li v-for="review in reviews" :key="review" class="menu__link">
+            <NuxtLink :to="review.attributes.url">
+              {{ review["attributes"]["title"] }}
+            </NuxtLink>
+          </li>
+
+          <!-- <li class="py-2">
             <NuxtLink to="/why-air360">
               <div
                 class="menu__link"
@@ -76,7 +83,7 @@
                 Inspiration
               </div>
             </NuxtLink>
-          </li>
+          </li> -->
           <!-- <li class="py-2">
               <NuxtLink :to="$localePath('/price')">
                 <div
@@ -86,14 +93,14 @@
                 </div>
               </NuxtLink>
             </li> -->
-          <li class="py-2">
+          <!-- <li class="py-2">
             <a
               href="https://beta.air360.io/"
               class="menu__link"
               target="_blank"
               rel="noopener noreferrer"
             >Login</a>
-          </li>
+          </li> -->
           <li class="py-2">
             <NuxtLink to="/">
               <button
@@ -113,7 +120,7 @@
         <p>{{ review.body }}</p>
       </div>
     </div> -->
-    <pre>{{ data }}</pre>
+    <!-- <pre>{{ data }}</pre> -->
   </nav>
 </template>
 
@@ -124,9 +131,15 @@ import { allReviewsQuery } from '~~/graphql/queries'
 // const reviews = result.value?.reviews?.data ?? []
 // console.log(result)
 // console.log(allReviewsQuery)
-const variables = { limit: 5 }
-const { data } = await useAsyncQuery(allReviewsQuery, variables)
-console.log(data)
+const reviews = ref([])
+
+onMounted(async () => {
+  const variables = { limit: 5 }
+  const { data } = await useAsyncQuery(allReviewsQuery, variables)
+  // console.log(data)
+  reviews.value = data.value.reviews.data
+})
+
 const isActive = ref(false)
 
 const toggleMenu = () => {
