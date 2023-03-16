@@ -61,7 +61,10 @@
             </li> -->
 
           <li v-for="review in reviews" :key="review" class="menu__link">
-            <NuxtLink :to="review.attributes.url">
+            <NuxtLink v-if="review.attributes.url" :to="review.attributes.url">
+              {{ review["attributes"]["title"] }}
+            </NuxtLink>
+            <NuxtLink v-if="review.attributes.externalURL" :to="review.attributes.externalURL">
               {{ review["attributes"]["title"] }}
             </NuxtLink>
           </li>
@@ -133,12 +136,19 @@ import { allReviewsQuery } from '~~/graphql/queries'
 // console.log(allReviewsQuery)
 const reviews = ref([])
 
-onMounted(async () => {
-  const variables = { limit: 5 }
-  const { data } = await useAsyncQuery(allReviewsQuery, variables)
-  // console.log(data)
+// onMounted(async () => {
+//   const variables = { limit: 5 }
+//   const { data } = await useAsyncQuery(allReviewsQuery, variables)
+//   console.log(data)
+//   reviews.value = data.value.reviews.data
+// })
+
+const variables = { limit: 5 }
+const { data } = await useAsyncQuery(allReviewsQuery, variables)
+if (data.value?.reviews) {
   reviews.value = data.value.reviews.data
-})
+  console.log(data)
+}
 
 const isActive = ref(false)
 

@@ -28,6 +28,9 @@
     },
     "url": {
       "type": "string"
+    },
+    "externalURL": {
+      "type": "string"
     }
   }
 }

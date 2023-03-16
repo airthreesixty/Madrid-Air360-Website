@@ -9,6 +9,7 @@ query allReviewsQuery {
         rating
         body
         url
+        externalURL
       }
     }
   }
