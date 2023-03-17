@@ -24,6 +24,9 @@ export default defineConfig({
         black: {
           600: '#6F727B',
           700: '#232E4A'
+        },
+        gray: {
+          600: '#FAFAFA'
         }
       }
     }

@@ -1,8 +1,6 @@
-export type Review = {
-    reviews: {
+export type Header = {
+    headers: {
       title: string
-      rating: number
-      body: string
       url?: string
       externalURL?: string
     }[]

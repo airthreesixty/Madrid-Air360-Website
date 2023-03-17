@@ -1,3 +1,3 @@
 <template>
-  <p>Index page</p>
+  <TheHero />
 </template>

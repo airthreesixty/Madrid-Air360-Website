@@ -42,12 +42,12 @@
         <ul
           class="flex flex-col p-4 mt-4 border items-center border-none lg:flex-row lg:space-x-8 lg:mt-0 lg:text-base lg:font-medium lg:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
         >
-          <li v-for="review in reviews" :key="review" class="menu__link">
-            <NuxtLink v-if="review.attributes.url" :to="review.attributes.url">
-              {{ review["attributes"]["title"] }}
+          <li v-for="header in headers" :key="header" class="menu__link">
+            <NuxtLink v-if="header.attributes.url" :to="header.attributes.url">
+              {{ header["attributes"]["title"] }}
             </NuxtLink>
-            <NuxtLink v-if="review.attributes.externalURL" :to="review.attributes.externalURL">
-              {{ review["attributes"]["title"] }}
+            <NuxtLink v-if="header.attributes.externalURL" :to="header.attributes.externalURL">
+              {{ header["attributes"]["title"] }}
             </NuxtLink>
           </li>
           <li class="py-2">
@@ -67,14 +67,14 @@
 </template>
 
 <script setup lang="ts">
-import type { Review } from '../interfaces/type'
-import { allReviewsQuery } from '~~/graphql/queries'
+import type { Header } from '../interfaces/type'
+import { allHeadersQuery } from '~~/graphql/queries'
 
-const reviews = ref([])
+const headers = ref([])
 
-const { data } = await useAsyncQuery<Review>(allReviewsQuery)
-if (data.value?.reviews) {
-  reviews.value = data.value.reviews.data
+const { data } = await useAsyncQuery<Header>(allHeadersQuery)
+if (data.value?.headers) {
+  headers.value = data.value.headers.data
   console.log(data)
 } else {
   // console.log('Fetch failed')
