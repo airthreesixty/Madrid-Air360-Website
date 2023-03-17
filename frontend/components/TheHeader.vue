@@ -76,7 +76,7 @@ if (data.value?.reviews) {
   reviews.value = data.value.reviews.data
   console.log(data)
 } else {
-  // console.log('Fetch failed')
+  console.log('Fetch failed')
 }
 
 const isActive = ref(false)
