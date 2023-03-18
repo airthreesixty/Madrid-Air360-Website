@@ -62,23 +62,29 @@
         </ul>
       </div>
     </div>
-    <!-- <pre>{{ data }}</pre> -->
+    <!-- <pre>{{ headers }}</pre> -->
   </nav>
 </template>
 
 <script setup lang="ts">
+import axios from 'axios'
 import type { Header } from '../interfaces/type'
 import { allHeadersQuery } from '~~/graphql/queries'
 
+// const { data } = await useAsyncQuery<Header>(allHeadersQuery)
 const headers = ref([])
 
-const { data } = await useAsyncQuery<Header>(allHeadersQuery)
-if (data.value?.headers) {
-  headers.value = data.value.headers.data
-  console.log(data)
-} else {
-  // console.log('Fetch failed')
-}
+onMounted(async () => {
+  headers.value = await (await axios.get('http://localhost:1337/api/headers')).data.data
+  console.log(headers)
+})
+// const headers = await await (axios.get('http://localhost:1337/api/headers')).data.data
+// if (data.value?.headers) {
+//   headers.value = data.value.headers.data
+//   console.log(data)
+// } else {
+//   console.log('Fetch failed')
+// }
 
 const isActive = ref(false)
 
