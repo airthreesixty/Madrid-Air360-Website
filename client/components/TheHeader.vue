@@ -76,7 +76,7 @@ const headers = ref([])
 
 onMounted(async () => {
   headers.value = await (await axios.get('http://localhost:1337/api/headers')).data.data
-  console.log(headers)
+  // console.log(headers)
 })
 // const headers = await await (axios.get('http://localhost:1337/api/headers')).data.data
 // if (data.value?.headers) {

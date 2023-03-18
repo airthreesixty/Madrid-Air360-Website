@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * review controller
+ * header controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::review.review');
+module.exports = createCoreController('api::header.header');

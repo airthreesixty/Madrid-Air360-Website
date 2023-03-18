@@ -1,3 +1,0 @@
-<template>
-  <!-- <TheHero /> -->index
-</template>
