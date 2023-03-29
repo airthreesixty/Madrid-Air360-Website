@@ -16,27 +16,27 @@
         <h1
           class="max-w-2xl mb-6 font-bold text-2xl bg-gradient-to-r from-[#6278DF] to-blue-[#3DDC97] bg-clip-text text-transparent lg:mb-8 md:text-3xl lg:text-4xl dark:text-gray-400"
         >
-          {{ heroes.title }}
+          <!-- {{ heroes.title }} -->
         </h1>
         <h2
           class="max-w-2xl mb-1 font-light text-gray-500 md:text-base lg:mb-8 lg:text-xl xl:leading-8 dark:text-gray-400"
         >
-          {{ heroes.subTitle }}
+          <!-- {{ heroes.subTitle }} -->
         </h2>
         <p>
-          {{ heroes.titleDescription }}
+          <!-- {{ heroes.titleDescription }} -->
         </p>
         <div class="pt-3 lg:flex">
           <button
             class="text-white bg-primary-600 text-base font-bold w-full mt-5 inline-block transition ease-in-out duration-300 hover:bg-primary-700 font-medium rounded-lg text-sm px-6 py-3 mr-2 mb-2 md:w-1/2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           >
-            {{ heroes.button1 }}
+            <!-- {{ heroes.button1 }} -->
           </button>
 
           <button
             class="text-white bg-blue-400 text-base font-bold w-full mt-3 block transition ease-in-out duration-300 md:mt-5 hover:bg-blue-500 font-medium rounded-lg text-sm px-6 py-3 mb-2 md:w-1/2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           >
-            {{ heroes.button2 }}
+            <!-- {{ heroes.button2 }} -->
           </button>
         </div>
       </div>
@@ -49,16 +49,17 @@
       </div>
     </div>
   </section>
-  <pre>{{ heroes }}</pre>
+  <!-- <pre>{{ data }}</pre> -->
 </template>
 
 <script setup lang="ts">
-import axios from 'axios'
+// const { find } = useStrapi()
+// const { data } = await useAsyncData('page', () => find('pages', 2))
 
-const heroes:any = ref([])
+// const { findOne } = useStrapi()
+// const { data, pending, refresh, error } = await useAsyncData(
+//   'restaurant',
+//   () => findOne('restaurants', 1)
+// )
 
-onMounted(async () => {
-  heroes.value = await (await axios.get('http://localhost:1337/api/heroes/1')).data.data.attributes
-  console.log(heroes.heroImage)
-})
 </script>

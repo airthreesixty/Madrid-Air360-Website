@@ -39,10 +39,10 @@
         class="w-full transition ease-in-out duration-500 lg:block lg:w-auto"
         :class="{block: isActive, hidden: !isActive}"
       >
-        <ul
+        <!-- <ul
           class="flex flex-col p-4 mt-4 border items-center border-none lg:flex-row lg:space-x-8 lg:mt-0 lg:text-base lg:font-medium lg:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
         >
-          <li v-for="header in headers" :key="header" class="menu__link">
+          <li v-for="header in data" :key="header" class="menu__link">
             <NuxtLink v-if="header.attributes.url" :to="header.attributes.url">
               {{ header["attributes"]["title"] }}
             </NuxtLink>
@@ -59,32 +59,31 @@
               </button>
             </NuxtLink>
           </li>
-        </ul>
+        </ul> -->
       </div>
     </div>
-    <!-- <pre>{{ headers }}</pre> -->
+    <pre>{{ data }}</pre>
   </nav>
 </template>
 
 <script setup lang="ts">
-import axios from 'axios'
 import type { Header } from '../interfaces/type'
 import { allHeadersQuery } from '~~/graphql/queries'
+// const route = useRoute()
+// const graphql = useStrapiGraphQL()
 
-// const { data } = await useAsyncQuery<Header>(allHeadersQuery)
-const headers = ref([])
+// const header = await graphql(allHeadersQuery, { id: 1 })
+// console.log(route.params.id)
+const { find } = useStrapi()
+const random = String(Math.random())
 
-onMounted(async () => {
-  headers.value = await (await axios.get('http://localhost:1337/api/headers')).data.data
-  // console.log(headers)
-})
-// const headers = await await (axios.get('http://localhost:1337/api/headers')).data.data
-// if (data.value?.headers) {
-//   headers.value = data.value.headers.data
-//   console.log(data)
-// } else {
-//   console.log('Fetch failed')
-// }
+const { data } = await useAsyncData(
+  random,
+  () => {
+    console.log('name')
+    return find<Header>('headers')
+  }
+)
 
 const isActive = ref(false)
 
