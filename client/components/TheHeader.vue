@@ -43,20 +43,16 @@
           class="flex flex-col p-4 mt-4 border items-center border-none lg:flex-row lg:space-x-8 lg:mt-0 lg:text-base lg:font-medium lg:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
         >
           <li v-for="header in headers.links" :key="header.links" class="menu__link">
-            <NuxtLink v-if="!header.isExternal" :to="header.href">
+            <NuxtLink v-if="!header.isExternal" :to="header.href" :target="header.target">
               {{ header.label }}
             </NuxtLink>
-            <NuxtLink v-if="header.isExternal" :to="header.href">
+            <NuxtLink v-if="header.isExternal" :to="header.href" :target="header.target">
               {{ header.label }}
             </NuxtLink>
           </li>
           <li class="py-2">
-            <NuxtLink to="/">
-              <button
-                class="bg-primary-600 text-base text-white transition ease-in-out duration-300 hover:bg-primary-700 font-medium rounded-lg text-sm px-5 py-2 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-              >
-                Get Started
-              </button>
+            <NuxtLink :to="headers.button.href" class="bg-primary-600 text-base text-white transition ease-in-out duration-300 hover:bg-primary-700 font-medium rounded-lg text-sm px-5 py-2 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+              {{ headers.button.label }}
             </NuxtLink>
           </li>
         </ul>
@@ -70,9 +66,9 @@ import { headerQuery } from '~~/graphql/queries'
 
 const graphql = useStrapiGraphQL()
 const { data } = await graphql(headerQuery)
-const headers = data.global.data.attributes.Navigation
-// console.log(test)
-// console.log(data.global.data.attributes.Navigation.links)
+const headers = data.global.data.attributes.navigation
+
+console.log(data)
 
 const isActive = ref(false)
 
@@ -88,5 +84,4 @@ const toggleMenu = () => {
     @apply text-secondary-600;
   }
 }
-/* md:after:absolute md:after:top-0 md:hover:after:block md:hover:bg-transparent md:border-0 md:hover:text-secondary-600 md:after:content-[''] md:after:h-[4px] md:after:w-full md:after:static md:p-0 dark:text-gray-400 md:dark:hover:text-white md:after:bg-secondary-600 md:after:mt-[15px] dark:hover:bg-gray-700 */
 </style>
