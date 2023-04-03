@@ -6,7 +6,7 @@
       <div class="pb-6 md:hidden lg:mt-0 lg:col-span-5">
         <nuxt-img
           format="webp"
-          src="https://www.air360.io/wp-content/uploads/2022/08/hero-illustration.webp"
+          :src="media"
           alt="hero image"
           width="583"
           height="349"
@@ -16,50 +16,43 @@
         <h1
           class="max-w-2xl mb-6 font-bold text-2xl bg-gradient-to-r from-[#6278DF] to-blue-[#3DDC97] bg-clip-text text-transparent lg:mb-8 md:text-3xl lg:text-4xl dark:text-gray-400"
         >
-          <!-- {{ heroes.title }} -->
+          {{ heroData.title }}
         </h1>
         <h2
           class="max-w-2xl mb-1 font-light text-gray-500 md:text-base lg:mb-8 lg:text-xl xl:leading-8 dark:text-gray-400"
         >
-          <!-- {{ heroes.subTitle }} -->
+          {{ heroData.subTitle }}
         </h2>
         <p>
-          <!-- {{ heroes.titleDescription }} -->
+          {{ heroData.titleDescription }}
         </p>
         <div class="pt-3 lg:flex">
-          <button
-            class="text-white bg-primary-600 text-base font-bold w-full mt-5 inline-block transition ease-in-out duration-300 hover:bg-primary-700 font-medium rounded-lg text-sm px-6 py-3 mr-2 mb-2 md:w-1/2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-          >
-            <!-- {{ heroes.button1 }} -->
-          </button>
-
+          <NuxtLink :to="heroData.buttons[0].href" :target="heroData.buttons[0].target" class="text-white text-center bg-primary-600 text-base font-bold w-full mt-5 inline-block transition ease-in-out duration-300 hover:bg-primary-700 rounded-lg px-6 py-3 mr-2 mb-2 md:w-1/2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+            {{ heroData.buttons[0].label }}
+          </NuxtLink>
           <button
             class="text-white bg-blue-400 text-base font-bold w-full mt-3 block transition ease-in-out duration-300 md:mt-5 hover:bg-blue-500 font-medium rounded-lg text-sm px-6 py-3 mb-2 md:w-1/2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           >
-            <!-- {{ heroes.button2 }} -->
+            {{ heroData.buttons[1].label }}
           </button>
         </div>
       </div>
       <div class="hidden md:block md:flex lg:mt-0 lg:col-span-5">
         <nuxt-img
-          src="https://www.air360.io/wp-content/uploads/2022/08/hero-illustration.webp"
+          :src="media"
           alt="Hero image"
           class="object-scale-down"
         />
       </div>
     </div>
   </section>
-  <!-- <pre>{{ data }}</pre> -->
 </template>
 
 <script setup lang="ts">
-// const { find } = useStrapi()
-// const { data } = await useAsyncData('page', () => find('pages', 2))
+import { heroQuery } from '~~/graphql/queries'
+const graphql = useStrapiGraphQL()
 
-// const { findOne } = useStrapi()
-// const { data, pending, refresh, error } = await useAsyncData(
-//   'restaurant',
-//   () => findOne('restaurants', 1)
-// )
-
+const { data } = await graphql(heroQuery)
+const heroData = data.page.data.attributes.blocks[0]
+const media = useStrapiMedia(heroData.heroImage.data.attributes.url)
 </script>
