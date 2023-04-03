@@ -39,15 +39,15 @@
         class="w-full transition ease-in-out duration-500 lg:block lg:w-auto"
         :class="{block: isActive, hidden: !isActive}"
       >
-        <!-- <ul
+        <ul
           class="flex flex-col p-4 mt-4 border items-center border-none lg:flex-row lg:space-x-8 lg:mt-0 lg:text-base lg:font-medium lg:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
         >
-          <li v-for="header in data" :key="header" class="menu__link">
-            <NuxtLink v-if="header.attributes.url" :to="header.attributes.url">
-              {{ header["attributes"]["title"] }}
+          <li v-for="header in headers.links" :key="header.links" class="menu__link">
+            <NuxtLink v-if="!header.isExternal" :to="header.href">
+              {{ header.label }}
             </NuxtLink>
-            <NuxtLink v-if="header.attributes.externalURL" :to="header.attributes.externalURL">
-              {{ header["attributes"]["title"] }}
+            <NuxtLink v-if="header.isExternal" :to="header.href">
+              {{ header.label }}
             </NuxtLink>
           </li>
           <li class="py-2">
@@ -59,31 +59,20 @@
               </button>
             </NuxtLink>
           </li>
-        </ul> -->
+        </ul>
       </div>
     </div>
-    <pre>{{ data }}</pre>
   </nav>
 </template>
 
 <script setup lang="ts">
-import type { Header } from '../interfaces/type'
-import { allHeadersQuery } from '~~/graphql/queries'
-// const route = useRoute()
-// const graphql = useStrapiGraphQL()
+import { headerQuery } from '~~/graphql/queries'
 
-// const header = await graphql(allHeadersQuery, { id: 1 })
-// console.log(route.params.id)
-const { find } = useStrapi()
-const random = String(Math.random())
-
-const { data } = await useAsyncData(
-  random,
-  () => {
-    console.log('name')
-    return find<Header>('headers')
-  }
-)
+const graphql = useStrapiGraphQL()
+const { data } = await graphql(headerQuery)
+const headers = data.global.data.attributes.Navigation
+// console.log(test)
+// console.log(data.global.data.attributes.Navigation.links)
 
 const isActive = ref(false)
 

@@ -9,17 +9,6 @@ export default defineNuxtConfig({
     }
   },
   strapi: {
-    url: 'http://localhost:1337',
-    prefix: '/api',
-    version: 'v4',
-    cookie: {},
-    cookieName: 'strapi_jwt'
+    url: 'http://localhost:1337'
   }
-  // apollo: {
-  //   clients: {
-  //     default: {
-  //       httpEndpoint: 'http://localhost:1337/graphql'
-  //     }
-  //   }
-  // }
 })

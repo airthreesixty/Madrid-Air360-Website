@@ -1,28 +1,32 @@
 import gql from 'graphql-tag'
+// import { gql } from '@nuxtjs/apollo'
 
-export const allHeadersQuery = gql`
-query allHeadersQuery {
-  headers {
+// export const headersQuery = gql`
+// query {
+//   headers {
+//     data {
+//       attributes {
+//         title
+//         url
+//         externalURL
+//       }
+//     }
+//   }
+// }`
+
+export const headerQuery = gql`
+query {
+  global {
     data {
       attributes {
-        title
-        url
-        externalURL
-      }
-    }
-  }
-}`
-
-export const allHerosQuery = gql`
-query allHerosQuery {
-  heroes {
-    data {
-      attributes {
-        title
-        subTitle
-        titleDescription
-        button1
-        button2
+        Navigation {
+          links {
+            href
+            isExternal
+            label
+            target
+          }
+        }
       }
     }
   }
