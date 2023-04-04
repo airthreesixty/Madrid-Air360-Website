@@ -18,7 +18,21 @@
     "buttons": {
       "type": "component",
       "repeatable": true,
-      "component": "shared.button"
+      "component": "shared.link"
+    },
+    "heroImage": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "bottomText": {
+      "type": "string"
     }
   }
 }

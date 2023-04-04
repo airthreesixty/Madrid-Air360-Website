@@ -48,6 +48,7 @@ page(id: 2) {
               isExternal
               label
             }
+            bottomText
           }
         }
       }

@@ -1,29 +1,29 @@
 <template>
-  <section class="bg-gray-600 dark:bg-gray-900">
+  <section class="bg-gray-600 px-5 dark:bg-gray-900" :style="`background-image: url(${mediaBottom});`">
     <div
       class="grid max-w-screen-[1400px] px-4 py-12 mx-auto md:gap-4 md:grid-cols-2 lg:gap-8 xl:gap-0 lg:py-16 lg:px-8 lg:grid-cols-12"
     >
       <div class="pb-6 md:hidden lg:mt-0 lg:col-span-5">
         <nuxt-img
           format="webp"
-          :src="media"
+          :src="mediaHero"
           alt="hero image"
           width="583"
           height="349"
         />
       </div>
-      <div class="mr-auto place-self-center lg:col-span-7 md:flex-1">
+      <div class="mr-auto place-self-center lg:col-span-5 md:flex-1">
         <h1
           class="max-w-2xl mb-6 font-bold text-2xl bg-gradient-to-r from-[#6278DF] to-blue-[#3DDC97] bg-clip-text text-transparent lg:mb-8 md:text-3xl lg:text-4xl dark:text-gray-400"
         >
           {{ heroData.title }}
         </h1>
         <h2
-          class="max-w-2xl mb-1 font-light text-gray-500 md:text-base lg:mb-8 lg:text-xl xl:leading-8 dark:text-gray-400"
+          class="max-w-2xl mb-6 leading-7 font-bold text-black-600 md:text-base lg:mb-8 lg:text-xl xl:leading-8 dark:text-gray-400"
         >
           {{ heroData.subTitle }}
         </h2>
-        <p>
+        <p class="leading-7 text-black-600">
           {{ heroData.titleDescription }}
         </p>
         <div class="pt-3 lg:flex">
@@ -37,13 +37,16 @@
           </button>
         </div>
       </div>
-      <div class="hidden md:block md:flex lg:mt-0 lg:col-span-5">
+      <div class="hidden md:block md:flex lg:mt-0 lg:col-span-7">
         <nuxt-img
-          :src="media"
+          :src="mediaHero"
           alt="Hero image"
           class="object-scale-down"
         />
       </div>
+    </div>
+    <div class="text-3xl lg:text-[39px] font-bold text-center px-5 lg:px-25 pb-50 mt-5 lg:mt-10 bg-gradient-to-r from-[#6278DF] to-blue-[#3DDC97] bg-clip-text text-transparent">
+      {{ heroData.bottomText }}
     </div>
   </section>
 </template>
@@ -54,5 +57,7 @@ const graphql = useStrapiGraphQL()
 
 const { data } = await graphql(heroQuery)
 const heroData = data.page.data.attributes.blocks[0]
-const media = useStrapiMedia(heroData.heroImage.data.attributes.url)
+const mediaHero = useStrapiMedia(heroData.heroImage.data[0].attributes.url)
+const mediaBottom = useStrapiMedia(heroData.heroImage.data[1].attributes.url)
+console.log(mediaBottom)
 </script>
