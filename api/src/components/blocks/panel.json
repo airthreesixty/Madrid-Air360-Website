@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_blocks_panels",
+  "info": {
+    "displayName": "panel",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "cards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.card"
+    }
+  }
+}

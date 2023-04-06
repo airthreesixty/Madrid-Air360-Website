@@ -56,3 +56,22 @@ page(id: 2) {
   }
 }
 `
+
+export const cardsQuery = gql`
+  query {
+page (id: 2) {
+    data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksPanel{
+            title
+            cards {
+              description
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`

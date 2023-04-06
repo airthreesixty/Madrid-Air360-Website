@@ -18,7 +18,8 @@
     "blocks": {
       "type": "dynamiczone",
       "components": [
-        "blocks.hero"
+        "blocks.hero",
+        "blocks.panel"
       ]
     }
   }
