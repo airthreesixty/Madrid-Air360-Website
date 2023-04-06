@@ -51,7 +51,7 @@
             </NuxtLink>
           </li>
           <li class="py-2">
-            <NuxtLink :to="headerData.button.href" class="bg-primary-600 text-base text-white transition ease-in-out duration-300 hover:bg-primary-700 font-medium rounded-lg px-5 py-2 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+            <NuxtLink :to="headerData.button.href" class="bg-primary-600 text-base text-white transition ease-in-out duration-300 hover:bg-primary-700 font-medium rounded-lg px-6 py-3 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
               {{ headerData.button.label }}
             </NuxtLink>
           </li>
