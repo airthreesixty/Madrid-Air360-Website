@@ -4,7 +4,7 @@
       <div class="flex justify-start mb-10 md:col-span-5 md:items-center" :class="{'md:hidden': rightImage}">
         <nuxt-img :src="props.productImage" alt="mockup" format="webp" class="h-40 lg:w-120 lg:h-70" />
       </div>
-      <div class="mr-auto place-self-center md:col-span-7 lg:pr-6">
+      <div class="mr-auto md:mx-auto place-self-center md:col-span-7 lg:pr-6">
         <h1 class="text-white mb-4 pr-4 text-2xl md:text-4xl tracking-wide font-bold dark:text-white" :class="textTitleColor">
           {{ props.title }}
         </h1>
@@ -15,7 +15,7 @@
           {{ props.description }}
         </p>
       </div>
-      <div v-if="rightImage" class="flex hidden justify-start mb-10 md:col-span-5 md:items-center" :class="{'md:block': rightImage}">
+      <div v-if="rightImage" class="flex hidden md:flex justify-start mb-10 md:block md:col-span-5 md:items-center">
         <nuxt-img :src="props.productImage" alt="mockup" format="webp" class="h-40 lg:w-120 lg:h-70" />
       </div>
     </div>

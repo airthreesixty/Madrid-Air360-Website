@@ -46,7 +46,7 @@
         />
       </div>
     </div>
-    <div class="text-3xl lg:text-[39px] font-bold text-center px-5 lg:px-25 pb-50 mt-5 lg:mt-10 bg-gradient-to-r from-[#6278DF] to-blue-[#3DDC97] bg-clip-text text-transparent">
+    <div class="text-3xl lg:text-[39px] font-bold text-center tracking-wide px-5 lg:px-25 pb-10 md:pb-50 mt-5 md:mt-18 bg-gradient-to-r from-[#6278DF] to-blue-[#3DDC97] bg-clip-text text-transparent">
       {{ heroData.bottomText }}
     </div>
   </section>
