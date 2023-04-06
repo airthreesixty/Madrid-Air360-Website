@@ -1,6 +1,6 @@
 <template>
-  <section class="bg-white dark:bg-gray-900">
-    <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+  <section class="bg-white px-5 dark:bg-gray-900">
+    <div class="py-8 px-4 mx-auto max-w-screen-[1400px] lg:py-16 lg:px-6">
       <div class="px-10 text-center mb-15 lg:mb-16">
         <h2 class="mt-10 text-2xl md:text-4xl font-bold lg:px-20 text-black-700 dark:text-white">
           {{ cardData.title }}
