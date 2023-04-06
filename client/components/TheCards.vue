@@ -66,13 +66,12 @@
   </section>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { cardsQuery } from '~~/graphql/queries'
 
 const graphql = useStrapiGraphQL()
 const { data } = await graphql(cardsQuery)
 const cardData = data.page.data.attributes.blocks[1]
-console.log(cardData)
 </script>
 
 <style>

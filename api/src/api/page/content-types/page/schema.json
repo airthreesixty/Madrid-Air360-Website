@@ -19,7 +19,8 @@
       "type": "dynamiczone",
       "components": [
         "blocks.hero",
-        "blocks.panel"
+        "blocks.panel",
+        "blocks.air360-description"
       ]
     }
   }

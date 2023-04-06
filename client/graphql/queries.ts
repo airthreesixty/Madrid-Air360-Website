@@ -75,3 +75,28 @@ page (id: 2) {
   }
 }
 `
+
+export const air360DescriptionQuery = gql`
+query {
+page (id: 2) {
+data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksAir360Description {
+            title
+            subTitle
+            description
+            image {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`

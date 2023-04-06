@@ -52,7 +52,7 @@
   </section>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { heroQuery } from '~~/graphql/queries'
 const graphql = useStrapiGraphQL()
 
@@ -60,5 +60,4 @@ const { data } = await graphql(heroQuery)
 const heroData = data.page.data.attributes.blocks[0]
 const mediaHero = useStrapiMedia(heroData.heroImage.data[0].attributes.url)
 const mediaBottom = useStrapiMedia(heroData.heroImage.data[1].attributes.url)
-console.log(mediaBottom)
 </script>
