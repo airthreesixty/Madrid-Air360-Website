@@ -38,10 +38,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Print current directory
-        run: |
-          pwd
-          ls
       - name: Detect package manager
         id: detect-package-manager
         run: |
@@ -87,7 +83,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: ./client/dist
+          path: ./.output/public
 
   # Deployment job
   deploy:
