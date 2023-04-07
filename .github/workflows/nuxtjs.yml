@@ -29,6 +29,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Print current directory
+        run: pwd
       - name: Change directory to client
         run: cd client
       - name: Checkout
