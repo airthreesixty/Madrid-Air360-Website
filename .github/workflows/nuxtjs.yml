@@ -31,7 +31,7 @@ jobs:
     steps:
       - name: Change directory to client
         run: yarn build
-        working-directory: ./client
+        working-directory: client
       - name: Checkout
         uses: actions/checkout@v3
       - name: Detect package manager
