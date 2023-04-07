@@ -36,10 +36,10 @@ jobs:
         working-directory: ${{ env.working-directory }}
         
     steps:
-      - name: where
-        run: pwd
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Print current directory
+        run: pwd
       - name: Detect package manager
         id: detect-package-manager
         run: |
