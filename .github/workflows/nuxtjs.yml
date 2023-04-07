@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Change directory to client
-        run: cd client
+        run: yarn build
         working-directory: ./client
       - name: Checkout
         uses: actions/checkout@v3
