@@ -32,7 +32,7 @@
           </NuxtLink>
           <a
             href="#"
-            class="text-white bg-blue-400 text-base font-bold text-center flex justify-center items-center w-full mt-3 block transition ease-in-out duration-300 md:mt-5 hover:bg-blue-500 font-medium rounded-lg text-sm px-6 py-3 mb-2 md:w-1/2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            class="text-white bg-blue-400 text-base font-bold text-center flex justify-center items-center w-full mt-3 block transition ease-in-out duration-300 md:mt-5 hover:bg-blue-500 rounded-lg px-6 py-3 mb-2 md:w-1/2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
           >
             {{ heroData.buttons[1].label }}
           </a>
