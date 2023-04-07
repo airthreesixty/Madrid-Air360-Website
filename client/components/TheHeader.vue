@@ -61,7 +61,7 @@
   </nav>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { headerQuery } from '~~/graphql/queries'
 
 const graphql = useStrapiGraphQL()
