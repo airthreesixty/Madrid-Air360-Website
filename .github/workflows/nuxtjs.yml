@@ -39,7 +39,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Print current directory
-        run: pwd
+        run: |
+          pwd
+          ls
       - name: Detect package manager
         id: detect-package-manager
         run: |
