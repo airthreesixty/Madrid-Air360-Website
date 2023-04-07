@@ -23,16 +23,14 @@ permissions:
 concurrency:
   group: "pages"
   cancel-in-progress: false
-  
-defaults: 
-  run:
-    working-directory: ./client
 
 jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Change directory to client
+        run: cd client
       - name: Checkout
         uses: actions/checkout@v3
       - name: Detect package manager
