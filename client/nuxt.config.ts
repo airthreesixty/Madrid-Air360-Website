@@ -7,13 +7,7 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: {
         lang: 'en'
-      },
-      meta: [
-        {
-          'http-equiv': 'Permissions-Policy',
-          content: 'interest-cohort=()'
-        }
-      ]
+      }
     }
   },
   strapi: {
