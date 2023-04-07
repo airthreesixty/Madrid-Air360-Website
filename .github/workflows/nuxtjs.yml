@@ -29,11 +29,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Change directory to client
-        run: cd client
       - name: Checkout
         uses: actions/checkout@v3
       - name: Detect package manager
+        working-directory: ./client
         id: detect-package-manager
         run: |
           if [ -f "${{ github.workspace }}/yarn.lock" ]; then
