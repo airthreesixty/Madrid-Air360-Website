@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Change directory to client
-        run: pushd client
+        run: root/client
       - name: Checkout
         uses: actions/checkout@v3
       - name: Detect package manager
@@ -78,8 +78,6 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./dist
-      - name: Change back to the previous directory
-        run: popd
 
   # Deployment job
   deploy:
