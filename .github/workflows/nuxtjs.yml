@@ -30,7 +30,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Change directory to client
-        run: cd ./client
+        working-directory: ./temp
       - name: Checkout
         uses: actions/checkout@v3
       - name: Detect package manager
