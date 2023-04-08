@@ -11,9 +11,7 @@
         <p class="max-w-2xl mb-6 font-light tracking-wide text-white lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400" :class="textSubTitleColor">
           {{ props.subTitle }}
         </p>
-        <p class="max-w-2xl mb-6 font-light tracking-wide text-white lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400" :class="textDescriptionColor">
-          {{ props.description }}
-        </p>
+        <div class="max-w-2xl mb-6 font-light tracking-wide text-white lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400" :class="textDescriptionColor" v-html="description" />
       </div>
       <div v-if="rightImage" class="flex hidden md:flex justify-start mb-10 md:block md:col-span-5 md:items-center">
         <nuxt-img :src="props.productImage" alt="mockup" format="webp" class="h-40 lg:w-120 lg:h-70" />
