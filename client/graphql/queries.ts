@@ -100,3 +100,28 @@ data {
   }
 }
 `
+
+export const testimonialQuery = gql`
+query {
+  page(id:2) {
+    data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksTestimonial {
+            quote
+            name
+            role
+            images {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`
