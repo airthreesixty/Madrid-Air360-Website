@@ -4,5 +4,6 @@
     <TheCards />
     <Air360Descriptions />
     <TheTestimonial />
+    <TheCta />
   </div>
 </template>
