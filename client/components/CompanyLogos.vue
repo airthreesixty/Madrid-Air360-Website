@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-white dark:bg-gray-900">
+  <section class="bg-[#FAFAFA] dark:bg-gray-900">
     <div class="py-10 lg:py-16 mx-auto max-w-screen-[1400px] max-w-screen-xl px-5">
       <h2 class="mb-8 md:mb-12 lg:mb-16 text-2xl font-bold tracking-wide text-center text-black-700 dark:text-white">
         {{ companyLogosData.title }}

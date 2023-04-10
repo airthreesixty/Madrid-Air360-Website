@@ -6,5 +6,6 @@
     <TheTestimonial />
     <TheCta />
     <CompanyLogos />
+    <TheFooter />
   </div>
 </template>

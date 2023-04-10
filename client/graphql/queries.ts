@@ -1,7 +1,7 @@
 import gql from 'graphql-tag'
 
-export const headerQuery = gql`
-  query {
+export const globalQuery = gql`
+query {
 global {
     data {
       attributes {
@@ -17,6 +17,28 @@ links {
             target
             href
             isExternal
+          }
+        }
+        footer {
+logo {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+          socialMedias {
+            url
+            target
+          }
+          columns {
+            title
+            links {
+              label
+              isExternal
+              target
+              href
+            }
           }
         }
       }

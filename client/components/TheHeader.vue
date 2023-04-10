@@ -62,10 +62,10 @@
 </template>
 
 <script setup lang="ts">
-import { headerQuery } from '~~/graphql/queries'
+import { globalQuery } from '~~/graphql/queries'
 
 const graphql = useStrapiGraphQL()
-const { data } = await graphql(headerQuery)
+const { data } = await graphql(globalQuery)
 const headerData = data.global.data.attributes.navigation
 
 const isActive = ref(false)

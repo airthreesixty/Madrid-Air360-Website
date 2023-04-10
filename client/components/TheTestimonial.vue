@@ -11,7 +11,7 @@
         <p class="mb-6 text-xl font-bold tracking-wide text-black-600 dark:text-gray-400">
           {{ testimonialData.name }}
         </p>
-        <p class="mb-6 text-xl font-light tracking-wide text-black-600 dark:text-gray-400">
+        <p class="mb-8 text-xl font-light tracking-wide text-black-600 dark:text-gray-400">
           {{ testimonialData.role }}
         </p>
         <nuxt-img format="webp" class="w-[110px] mb-10 filter brightness-100 contrast-100 saturate-0 blur-0 hue-rotate-0" :src="mediaLogo" />
