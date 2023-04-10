@@ -125,3 +125,25 @@ query {
   }
 }
 `
+
+export const ctaQuery = gql`
+query {
+  page(id:2) {
+    data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksCta {
+            text
+            button {
+              label
+              target
+              isExternal
+              href
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`

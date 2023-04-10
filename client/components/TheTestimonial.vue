@@ -1,7 +1,9 @@
 <template>
   <section class="bg-white dark:bg-gray-900" :style="`background-image: url(${mediaBg})`">
     <div class="gap-8 items-center py-8 px-5 mx-auto max-w-screen-xl xl:gap-16 md:grid md:grid-cols-2 sm:py-16 lg:px-6">
-      <nuxt-img format="webp" class="w-full md:hidden" :src="mediaHeadShot" alt="dashboard image" />
+      <div class="flex justify-center md:hidden">
+        <nuxt-img format="webp" class="w-2/3" :src="mediaHeadShot" alt="dashboard image" />
+      </div>
       <div class="mt-4 flex flex-col items-center md:mt-0">
         <p class="border-deco mb-4 text-center tracking-wide text-2xl md:text-4xl font-bold text-black-600 dark:text-white">
           {{ testimonialData.quote }}
