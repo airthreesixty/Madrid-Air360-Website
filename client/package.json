@@ -19,6 +19,11 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-brands-svg-icons": "^6.4.0",
+    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/vue-fontawesome": "^3.0.3",
     "@rollup/plugin-graphql": "^2.0.3",
     "axios": "^1.3.4",
     "graphql": "^16.6.0",
