@@ -20,7 +20,10 @@
       "components": [
         "blocks.hero",
         "blocks.panel",
-        "blocks.air360-description"
+        "blocks.air360-description",
+        "blocks.testimonial",
+        "blocks.cta",
+        "blocks.company-logos"
       ]
     }
   }

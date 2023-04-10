@@ -57,7 +57,7 @@
                 <NuxtLink v-if="!link.isExternal" :to="link.href">
                   {{ link.label }}
                 </NuxtLink>
-                <a v-if="link.isExternal" :target="link.target" :to="link.href">
+                <a v-if="link.isExternal" :target="link.target" :href="link.href">
                   {{ link.label }}
                 </a>
               </li>

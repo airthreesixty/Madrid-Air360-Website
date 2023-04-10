@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_shared_columns",
+  "info": {
+    "displayName": "Columns"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.link"
+    }
+  }
+}

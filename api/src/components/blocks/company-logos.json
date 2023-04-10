@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_blocks_company_logos",
+  "info": {
+    "displayName": "companyLogos"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "logos": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

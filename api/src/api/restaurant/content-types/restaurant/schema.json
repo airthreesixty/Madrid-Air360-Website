@@ -25,6 +25,9 @@
       "relation": "manyToMany",
       "target": "api::category.category",
       "inversedBy": "restaurants"
+    },
+    "erww": {
+      "type": "richtext"
     }
   }
 }
