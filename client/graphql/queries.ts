@@ -217,3 +217,20 @@ query {
   }
 }
 `
+
+export const statisticsQuery = gql`
+query {
+  page(id:3) {
+data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksStatistics {
+            quote 
+            source
+          }
+        }
+      }
+    }
+  }
+}
+`

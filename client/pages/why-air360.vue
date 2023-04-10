@@ -1,3 +1,6 @@
 <template>
-  <VideoSection />
+  <div>
+    <VideoSection />
+    <TheStatistics />
+  </div>
 </template>
