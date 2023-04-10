@@ -192,3 +192,28 @@ data {
   }
 }
 `
+
+export const videoSectionQuery = gql`
+query {
+  page(id:3) {
+    data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksVideoSection {
+            title
+            subTitle
+            description
+            bgImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`

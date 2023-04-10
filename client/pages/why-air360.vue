@@ -1,3 +1,3 @@
 <template>
-  <p>Why Air360</p>
+  <VideoSection />
 </template>
