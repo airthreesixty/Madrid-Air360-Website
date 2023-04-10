@@ -147,3 +147,26 @@ query {
   }
 }
 `
+
+export const companyLogosQuery = gql`
+query {
+page (id: 2) {
+data {
+      attributes {
+        blocks {
+... on ComponentBlocksCompanyLogos {
+            title 
+            logos {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`

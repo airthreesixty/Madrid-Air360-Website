@@ -5,5 +5,6 @@
     <Air360Descriptions />
     <TheTestimonial />
     <TheCta />
+    <CompanyLogos />
   </div>
 </template>
