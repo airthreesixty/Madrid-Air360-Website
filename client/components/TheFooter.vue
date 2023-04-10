@@ -1,6 +1,6 @@
 <template>
-  <footer class="bg-white p-6 dark:bg-gray-800">
-    <div class="mx-auto max-w-screen-xl">
+  <footer class="bg-white py-8 dark:bg-gray-800">
+    <div class="mx-auto max-w-screen-xl px-5">
       <div class="md:flex md:justify-between">
         <div class="my-6 md:mb-0">
           <nuxt-img :src="logo" format="webp" class="flex items-center" />
@@ -49,7 +49,7 @@
         </div>
         <div class="grid grid-cols-1 gap-8 md:gap-5 lg:gap-10 md:grid-cols-3">
           <div v-for="column in footerData.columns" :key="column">
-            <h2 class="mb-6 text-base font-bold tracking-wide text-primary-600 dark:text-white">
+            <h2 class="mb-6 text-base md:text-xl font-bold tracking-wide text-primary-600 dark:text-white">
               {{ column.title }}
             </h2>
             <ul class="text-black-700 font-light">
