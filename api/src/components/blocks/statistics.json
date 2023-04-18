@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_blocks_statistics",
+  "info": {
+    "displayName": "statistics"
+  },
+  "options": {},
+  "attributes": {
+    "quote": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    }
+  }
+}

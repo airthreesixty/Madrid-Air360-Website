@@ -12,9 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Test": {
-      "type": "string"
-    },
     "blocks": {
       "type": "dynamiczone",
       "components": [
@@ -23,7 +20,10 @@
         "blocks.air360-description",
         "blocks.testimonial",
         "blocks.cta",
-        "blocks.company-logos"
+        "blocks.company-logos",
+        "blocks.video-section",
+        "blocks.statistics",
+        "blocks.roi"
       ]
     }
   }
