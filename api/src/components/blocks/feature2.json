@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_blocks_feature2s",
+  "info": {
+    "displayName": "feature2"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

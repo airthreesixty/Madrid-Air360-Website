@@ -18,7 +18,6 @@ const graphql = useStrapiGraphQL()
 const { data } = await graphql(specialQuery)
 const specialData = data.page.data.attributes.blocks[4]
 const media = useStrapiMedia(specialData.image.data.attributes.url)
-console.log(specialData)
 </script>
 
 <style scoped>

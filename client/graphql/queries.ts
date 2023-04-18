@@ -307,3 +307,19 @@ data {
   }
 }
 `
+
+export const features2Query = gql`
+query {
+  page(id:3) {
+data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksFeature2 {
+title
+          }
+        }
+      }
+    }
+  }
+}
+`

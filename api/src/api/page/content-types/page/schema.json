@@ -25,7 +25,8 @@
         "blocks.statistics",
         "blocks.roi",
         "blocks.features",
-        "blocks.special"
+        "blocks.special",
+        "blocks.feature2"
       ]
     }
   }

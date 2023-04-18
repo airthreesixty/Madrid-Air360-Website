@@ -1,6 +1,6 @@
 <template>
   <section class="bg-white px-5" :style="`background-image: url(${bgMedia});`">
-    <div class="gap-8 items-center py-8 mx-auto max-w-screen-[1400px] lg:gap-16 md:flex md:justify-center sm:py-16 lg:px-6">
+    <div class="gap-8 items-center py-8 mx-auto max-w-screen-[1400px] lg:gap-16 md:flex md:justify-center md:py-16 lg:px-6">
       <div class="">
         <nuxt-img class="w-50 md:w-65" :src="media" format="webp" alt="dashboard image" />
       </div>
@@ -16,7 +16,7 @@
         </NuxtLink>
       </div>
     </div>
-    <div class="py-5 md:pb-15 flex justify-center">
+    <div class="py-5 pb-15 flex justify-center">
       <p class="text-center tracking-wide text-2xl lg:text-4xl font-bold max-w-screen-lg bg-gradient-to-r from-[#E74B91] via-[#2245F5] to-[#6278DF] bg-clip-text text-transparent">
         {{ roiData.message }}
       </p>
