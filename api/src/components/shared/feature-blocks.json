@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_shared_feature_blocks",
+  "info": {
+    "displayName": "featureBlocks"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}

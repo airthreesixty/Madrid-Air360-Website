@@ -23,7 +23,9 @@
         "blocks.company-logos",
         "blocks.video-section",
         "blocks.statistics",
-        "blocks.roi"
+        "blocks.roi",
+        "blocks.features",
+        "blocks.special"
       ]
     }
   }

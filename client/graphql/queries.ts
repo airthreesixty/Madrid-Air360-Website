@@ -265,3 +265,45 @@ data {
   }
 }
 `
+
+export const featuresQuery = gql`
+query {
+  page(id:3) {
+data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksFeatures {
+            features {
+              title
+              description
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`
+
+export const specialQuery = gql`
+query {
+  page(id:3) {
+data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksSpecial {
+            title
+            image {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`
