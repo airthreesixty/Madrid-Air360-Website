@@ -18,5 +18,4 @@ import { features2Query } from '~~/graphql/queries'
 const graphql = useStrapiGraphQL()
 const { data } = await graphql(features2Query)
 const features2Data = data.page.data.attributes.blocks[5]
-console.log(features2Data)
 </script>

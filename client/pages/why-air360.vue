@@ -6,6 +6,7 @@
     <FeaturesSection />
     <SpecialSection />
     <Features2 />
+    <AccordionSection />
     <CompanyLogos />
   </div>
 </template>
