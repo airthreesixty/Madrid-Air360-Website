@@ -234,3 +234,34 @@ data {
   }
 }
 `
+
+export const roiQuery = gql`
+  query {
+  page(id:3) {
+data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksRoi {
+            title
+            description
+            button {
+              href
+              label
+              isExternal
+              target
+            }
+            message
+                        images {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`

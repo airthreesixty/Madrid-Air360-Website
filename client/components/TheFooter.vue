@@ -77,4 +77,5 @@ const { data } = await graphql(globalQuery)
 const footerData = data.global.data.attributes.footer
 
 const logo = useStrapiMedia(footerData.logo.data.attributes.url)
+
 </script>
