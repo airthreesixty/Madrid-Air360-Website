@@ -5,7 +5,8 @@ module.exports = {
     './layouts/**/*.vue',
     './pages/**/*.vue',
     './plugins/**/*.{js,ts}',
-    './nuxt.config.{js,ts}'
+    './nuxt.config.{js,ts}',
+    './app.vue'
   ],
   theme: {
     fontFamily: {
@@ -18,21 +19,19 @@ module.exports = {
       ]
     },
     extend: {
-      extend: {
-        colors: {
-          primary: {
-            600: '#056AFE'
-          },
-          secondary: {
-            600: '#6278DF'
-          },
-          black: {
-            600: '#6F727B',
-            700: '#232E4A'
-          },
-          gray: {
-            600: '#FAFAFA'
-          }
+      colors: {
+        primary: {
+          600: '#056AFE'
+        },
+        secondary: {
+          600: '#6278DF'
+        },
+        black: {
+          600: '#6F727B',
+          700: '#232E4A'
+        },
+        gray: {
+          600: '#FAFAFA'
         }
       }
     }

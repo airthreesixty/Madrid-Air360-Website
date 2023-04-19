@@ -323,3 +323,39 @@ title
   }
 }
 `
+
+export const accordionsQuery = gql`
+query {
+  page(id:3) {
+data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksAccordionSection {
+title
+            bgImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            accordion {
+              media {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+              isVideo
+              title
+              subTitle
+              description
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`

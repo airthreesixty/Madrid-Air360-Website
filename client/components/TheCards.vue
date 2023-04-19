@@ -73,6 +73,3 @@ const graphql = useStrapiGraphQL()
 const { data } = await graphql(cardsQuery)
 const cardData = data.page.data.attributes.blocks[1]
 </script>
-
-<style>
-</style>
