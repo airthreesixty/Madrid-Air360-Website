@@ -1,10 +1,10 @@
 <template>
-  <section class="bg-gray-600 px-5 dark:bg-gray-900" :style="`background-image: url(${mediaBottom});`">
+  <section class="bg-gray-600 px-5 md:h-screen dark:bg-gray-900" :style="`background-image: url(${mediaBottom});`">
     <div
-      class="grid max-w-screen-[1400px] px-4 py-12 mx-auto md:gap-4 md:grid-cols-2 lg:gap-8 xl:gap-0 lg:py-16 lg:px-8 lg:grid-cols-12"
+      class="max-w-screen-[1400px] px-4 py-12 mx-auto md:gap-4 md:flex lg:gap-8 xl:gap-0 lg:py-16 lg:px-8"
     >
-      <transition v-if="show" appear @before-enter="beforeEnter" @enter="enter">
-        <div class="pb-6 md:hidden lg:mt-0 lg:col-span-5">
+      <transition appear @before-enter="beforeEnter" @enter="enter">
+        <div v-if="show" class="pb-6 md:hidden lg:mt-0 lg:col-span-5">
           <nuxt-img
             format="webp"
             :src="mediaHero"
@@ -14,8 +14,8 @@
           />
         </div>
       </transition>
-      <transition v-if="show" appear @before-enter="beforeEnter2" @enter="enter2">
-        <div class="mr-auto place-self-center lg:col-span-5 md:flex-1">
+      <transition appear @before-enter="beforeEnter" @enter="enter2">
+        <div v-if="show" class="mr-auto place-self-center lg:col-span-5 md:flex-1">
           <h1
             class="max-w-2xl mb-6 font-bold text-2xl bg-gradient-to-r from-[#6278DF] to-blue-[#3DDC97] bg-clip-text text-transparent lg:mb-8 md:text-3xl lg:text-4xl dark:text-gray-400"
           >
@@ -42,8 +42,8 @@
           </div>
         </div>
       </transition>
-      <transition v-if="show" appear :css="false" @before-enter="beforeEnter" @enter="enter">
-        <div class="hidden md:flex lg:mt-0 lg:col-span-7">
+      <transition appear :css="false" @before-enter="beforeEnter" @enter="enter">
+        <div v-if="show" class="hidden md:flex md:flex-1 lg:mt-0">
           <nuxt-img
             :src="mediaHero"
             alt="Hero image"
@@ -52,11 +52,13 @@
         </div>
       </transition>
     </div>
-    <transition appear @before-enter="beforeEnter" @enter="enter">
-      <div v-if="show" class="text-3xl lg:text-[39px] font-bold text-center tracking-wide px-5 lg:px-25 pb-10 md:pb-50 mt-5 md:mt-18 bg-gradient-to-r from-[#6278DF] to-blue-[#3DDC97] bg-clip-text text-transparent">
-        {{ heroData.bottomText }}
-      </div>
-    </transition>
+    <div class="py-12">
+      <transition appear @before-enter="beforeEnter" @enter="enter">
+        <div v-if="show" class="text-3xl lg:text-[39px] font-bold text-center tracking-wide px-5 lg:px-25 bg-gradient-to-r from-[#6278DF] to-blue-[#3DDC97] bg-clip-text text-transparent">
+          {{ heroData.bottomText }}
+        </div>
+      </transition>
+    </div>
   </section>
 </template>
 
@@ -71,17 +73,13 @@ const mediaHero = useStrapiMedia(heroData.heroImage.data[0].attributes.url)
 const mediaBottom = useStrapiMedia(heroData.heroImage.data[1].attributes.url)
 const show = ref(false)
 
-// const toggle = () => {
-//   show.value = !show.value
-// }
-
 onMounted(() => {
   show.value = true
 })
 const beforeEnter = (el) => {
   console.log('before-enter')
   el.style.opacity = '0'
-  el.style.transform = 'translateY(-100px)'
+  el.style.transform = 'translateY(30px)'
 }
 
 const enter = (el, done) => {
@@ -92,11 +90,6 @@ const enter = (el, done) => {
     duration: 1.5,
     onComplete: done
   })
-}
-const beforeEnter2 = (el) => {
-  console.log('before-enter')
-  el.style.opacity = '0'
-  el.style.transform = 'translateY(-100px)'
 }
 
 const enter2 = (el, done) => {
@@ -110,16 +103,3 @@ const enter2 = (el, done) => {
   })
 }
 </script>
-
-<style>
-.test-enter-from {
-  opacity: 0;
-  transform: translateY(-100px);
-}
-
-.test-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 1.5s;
-}
-</style>
