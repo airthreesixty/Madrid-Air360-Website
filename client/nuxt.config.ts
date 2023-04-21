@@ -2,12 +2,35 @@
 import gql from '@rollup/plugin-graphql'
 
 export default defineNuxtConfig({
-  modules: ['nuxt-windicss', '@nuxtjs/strapi', '@nuxt/image-edge'],
+  modules: ['nuxt-windicss', '@nuxtjs/strapi', '@nuxt/image-edge', '@nuxt/content', '@nuxtjs/algolia'],
   app: {
     head: {
       htmlAttrs: {
         lang: 'en'
       }
+    }
+  },
+  algolia: {
+    apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
+    applicationId: process.env.ALGOLIA_APPLICATION_ID,
+    instantSearch: {
+      theme: 'satellite'
+    },
+    docSearch: {
+      indexName: process.env.ALGOLIA_DOCSEARCH_INDEX_NAME
+    },
+    crawler: {
+      apiKey: process.env.ALGOLIA_WRITE_API_KEY ?? '',
+      indexName: process.env.ALGOLIA_DOCSEARCH_INDEX_NAME ?? '',
+      meta: ['title', 'description'],
+      include: [/\/blog/g]
+    }
+  },
+  runtimeConfig: {
+    public: {
+      algoliaSearchApiKey: process.env.ALGOLIA_SEARCH_API_KEY,
+      algoliaApplicationId: process.env.ALGOLIA_APPLICATION_ID,
+      algoliaDocsearchIndexName: process.env.ALGOLIA_DOCSEARCH_INDEX_NAME
     }
   },
   strapi: {
