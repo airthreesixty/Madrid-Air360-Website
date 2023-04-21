@@ -26,7 +26,8 @@
         "blocks.roi",
         "blocks.features",
         "blocks.special",
-        "blocks.feature2"
+        "blocks.feature2",
+        "blocks.accordion-section"
       ]
     }
   }

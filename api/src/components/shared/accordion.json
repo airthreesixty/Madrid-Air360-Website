@@ -1,0 +1,35 @@
+{
+  "collectionName": "components_shared_accordions",
+  "info": {
+    "displayName": "accordion",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "subTitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "richtext"
+    },
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "isVideo": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_blocks_accordion_sections",
+  "info": {
+    "displayName": "accordionSection",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "accordion": {
+      "type": "component",
+      "repeatable": true,
+      "component": "shared.accordion"
+    },
+    "title": {
+      "type": "string"
+    },
+    "bgImage": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
