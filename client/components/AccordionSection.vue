@@ -4,7 +4,7 @@
       <h2 class="text-2xl mb-10 font-bold tracking-wide">
         {{ accordionData.title }}
       </h2>
-      <div id="accordion-collapse" data-accordion="collapse">
+      <div id="accordion-collapse" data-accordion="collapse" class="w-full">
         <div v-for="(accordion, index) in accordionData.accordion" :key="index">
           <h2 :id="`accordion-collapse-heading-${index}`">
             <button type="button" class="flex items-center justify-between bg-white w-full p-5 font-medium text-left text-black-700 border border-b-0 border-gray-200" :data-accordion-target="`#accordion-collapse-body-${index}`" aria-expanded="true" :aria-controls="`accordion-collapse-body-${index}`">
@@ -13,7 +13,7 @@
             </button>
           </h2>
           <div :id="`accordion-collapse-body-${index}`" class="hidden transition ease-in-out duration-300" :aria-labelledby="`accordion-collapse-heading-${index}`">
-            <div class="py-10 px-8 border md:flex  border-b-0 mx-auto bg-white border-gray-200 last:border-b-1  dark:border-gray-700 dark:bg-gray-900">
+            <div class="py-10 px-8 border md:flex border-b-0 mx-auto bg-white border-gray-200 last:border-b-1 dark:border-gray-700 dark:bg-gray-900">
               <div class="flex justify-start items-center md:order-1">
                 <div class="w-75 md:w-95 lg:w-110 p-8 md:order-last">
                   <nuxt-img v-if="!accordion.isVideo" :src="medias[index]" />
