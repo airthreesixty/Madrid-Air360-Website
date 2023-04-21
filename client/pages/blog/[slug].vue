@@ -122,7 +122,7 @@
 </template>
 
 <script setup lang="ts">
-import { useSeoMeta } from '@unhead/vue'
+// import { useSeoMeta } from '@unhead/vue'
 import { BlogArticle } from '~~/interfaces/blog'
 
 const route = useRoute()
