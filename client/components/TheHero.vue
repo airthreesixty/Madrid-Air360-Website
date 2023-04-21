@@ -4,7 +4,7 @@
       class="max-w-screen-[1400px] px-4 py-12 mx-auto md:gap-4 md:flex lg:gap-8 xl:gap-0 lg:py-16 lg:px-8"
     >
       <transition appear @before-enter="beforeEnter" @enter="enter">
-        <div v-if="show" class="pb-6 md:hidden lg:mt-0 lg:col-span-5">
+        <div class="pb-6 md:hidden lg:mt-0 lg:col-span-5">
           <nuxt-img
             format="webp"
             :src="mediaHero"
@@ -14,8 +14,8 @@
           />
         </div>
       </transition>
-      <transition appear @before-enter="beforeEnter" @enter="enter2">
-        <div v-if="show" class="mr-auto place-self-center lg:col-span-5 md:flex-1">
+      <transition name="test">
+        <div class="mr-auto place-self-center lg:col-span-5 md:flex-1">
           <h1
             class="max-w-2xl mb-6 font-bold text-2xl bg-gradient-to-r from-[#6278DF] to-blue-[#3DDC97] bg-clip-text text-transparent lg:mb-8 md:text-3xl lg:text-4xl dark:text-gray-400"
           >
@@ -43,7 +43,7 @@
         </div>
       </transition>
       <transition appear :css="false" @before-enter="beforeEnter" @enter="enter">
-        <div v-if="show" class="hidden md:flex md:flex-1 lg:mt-0">
+        <div class="hidden md:flex md:flex-1 lg:mt-0">
           <nuxt-img
             :src="mediaHero"
             alt="Hero image"
@@ -52,13 +52,11 @@
         </div>
       </transition>
     </div>
-    <div class="py-12">
-      <transition appear @before-enter="beforeEnter" @enter="enter">
-        <div v-if="show" class="text-3xl lg:text-[39px] font-bold text-center tracking-wide px-5 lg:px-25 bg-gradient-to-r from-[#6278DF] to-blue-[#3DDC97] bg-clip-text text-transparent">
-          {{ heroData.bottomText }}
-        </div>
-      </transition>
-    </div>
+    <transition appear @before-enter="beforeEnter" @enter="enter">
+      <div class="text-3xl lg:text-[39px] py-12 font-bold text-center tracking-wide px-5 lg:px-25 bg-gradient-to-r from-[#6278DF] to-blue-[#3DDC97] bg-clip-text text-transparent">
+        {{ heroData.bottomText }}
+      </div>
+    </transition>
   </section>
 </template>
 
@@ -71,13 +69,9 @@ const { data } = await graphql(heroQuery)
 const heroData = data.page.data.attributes.blocks[0]
 const mediaHero = useStrapiMedia(heroData.heroImage.data[0].attributes.url)
 const mediaBottom = useStrapiMedia(heroData.heroImage.data[1].attributes.url)
-const show = ref(false)
 
-onMounted(() => {
-  show.value = true
-})
 const beforeEnter = (el) => {
-  console.log('before-enter')
+  // console.log('before-enter')
   el.style.opacity = '0'
   el.style.transform = 'translateY(30px)'
 }
@@ -103,3 +97,16 @@ const enter2 = (el, done) => {
   })
 }
 </script>
+
+<style>
+.test-enter-before {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.test-enter-active {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 1.5s;
+}
+</style>

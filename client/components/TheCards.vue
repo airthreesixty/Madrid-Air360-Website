@@ -1,13 +1,12 @@
 <template>
   <section class="bg-white px-5 dark:bg-gray-900">
     <div class="py-8 px-5 mx-auto max-w-screen-[1400px] lg:py-16 lg:px-6">
-      <transition appear @before-enter="beforeEnter" @enter="enter">
-        <div v-if="show" class="px-6 md:px-10 text-center mb-15 lg:mb-16">
-          <h2 class="mt-10 text-2xl tracking-wide md:text-4xl font-bold lg:px-20 text-black-700 dark:text-white">
-            {{ cardData.title }}
-          </h2>
-        </div>
-      </transition>
+      <div v-if="show" class="px-6 md:px-10 text-center mb-15 lg:mb-16">
+        <h2 class="mt-10 text-2xl tracking-wide md:text-4xl font-bold lg:px-20 text-black-700 dark:text-white">
+          {{ cardData.title }}
+        </h2>
+      </div>
+
       <div class="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         <div class="bg-white text-center flex flex-col items-center border-3 rounded-[30px] border-secondary-600 shadow-sm dark:bg-gray-800 dark:border-gray-700">
           <svg
