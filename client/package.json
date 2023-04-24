@@ -11,12 +11,12 @@
   "devDependencies": {
     "@nuxt/content": "^2.6.0",
     "@nuxt/eslint-config": "^0.1.1",
-    "@nuxt/image-edge": "^1.0.0-27968280.9739e4d",
+    "@nuxt/image-edge": "1.0.0-28020728.5df24eb",
     "@nuxtjs/eslint-config-typescript": "^12.0.0",
     "@nuxtjs/strapi": "^1.9.0",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.36.0",
-    "nuxt": "^3.2.3",
+    "nuxt": "^3.4.2",
     "nuxt-windicss": "^2.6.1",
     "postcss": "^8.4.22",
     "tailwindcss": "^3.3.1",
@@ -41,5 +41,6 @@
     "graphql-tag": "^2.12.6",
     "gsap": "^3.11.5",
     "vue-loading-overlay": "^6.0.3"
-  }
+  },
+  "packageManager": "yarn@3.5.0"
 }
