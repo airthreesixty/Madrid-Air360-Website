@@ -37,21 +37,36 @@
       <div
         id="navbar-default"
         class="w-full transition ease-in-out duration-500 lg:block lg:w-auto"
-        :class="{block: isActive, hidden: !isActive}"
+        :class="{ block: isActive, hidden: !isActive }"
       >
         <ul
           class="flex flex-col p-4 mt-4 border items-center border-none lg:flex-row lg:space-x-8 lg:mt-0 lg:text-base lg:font-medium lg:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
         >
-          <li v-for="header in headerData.links" :key="header.links" class="menu__link">
-            <NuxtLink v-if="!header.isExternal" :to="header.href" :target="header.target">
+          <li
+            v-for="header in headerData.links"
+            :key="header.links"
+            class="menu__link"
+          >
+            <NuxtLink
+              v-if="!header.isExternal"
+              :to="header.href"
+              :target="header.target"
+            >
               {{ header.label }}
             </NuxtLink>
-            <NuxtLink v-if="header.isExternal" :to="header.href" :target="header.target">
+            <NuxtLink
+              v-if="header.isExternal"
+              :to="header.href"
+              :target="header.target"
+            >
               {{ header.label }}
             </NuxtLink>
           </li>
           <li class="py-2">
-            <NuxtLink :to="headerData.button.href" class="bg-primary-600 text-base text-white transition ease-in-out duration-300 hover:bg-primary-700 font-medium rounded-lg px-6 py-3 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+            <NuxtLink
+              :to="headerData.button.href"
+              class="bg-primary-600 text-base text-white transition ease-in-out duration-300 hover:bg-primary-700 font-medium rounded-lg px-6 py-3 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            >
               {{ headerData.button.label }}
             </NuxtLink>
           </li>
@@ -62,11 +77,40 @@
 </template>
 
 <script setup lang="ts">
-import { globalQuery } from '~~/graphql/queries'
+import { gql } from 'graphql-tag'
 
 const graphql = useStrapiGraphQL()
-const { data } = await graphql(globalQuery)
-const headerData = data.global.data.attributes.navigation
+
+const { data } = await useAsyncData('header-navigation', () =>
+  graphql(gql`
+    query {
+      global {
+        data {
+          attributes {
+            navigation {
+              links {
+                label
+                target
+                href
+                isExternal
+              }
+              button {
+                label
+                target
+                href
+                isExternal
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+)
+
+const headerData = computed(
+  () => data.value.data.global.data.attributes.navigation
+)
 
 const isActive = ref(false)
 
