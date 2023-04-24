@@ -20,12 +20,6 @@
     "description": {
       "type": "richtext"
     },
-    "categories": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::category.category",
-      "inversedBy": "restaurants"
-    },
     "erww": {
       "type": "richtext"
     }

@@ -2,7 +2,6 @@
   <div class="flex justify-center my-16">
     <div class="border-2 border-blue-300 max-w-md">
       <h2 class="text-center !bg-blue-300 !border-none toc">
-        <fa-icon class="" :icon="['fa', 'table']" />
         Table of Contents
       </h2>
       <ul class="toc-lists">

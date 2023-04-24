@@ -359,3 +359,34 @@ title
   }
 }
 `
+
+export const articlesQuery = gql`
+query {
+articles {
+    data {
+      id
+      attributes {
+        publishedAt
+        readingTime
+        title
+        content
+        href
+        category {
+data {
+            attributes {
+              title
+            }
+          }
+        }
+        image {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`

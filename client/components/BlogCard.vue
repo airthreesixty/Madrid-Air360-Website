@@ -1,23 +1,22 @@
 <template>
-  <nuxt-link :to="props.data._path">
+  <nuxt-link :to="data.attributes.href">
     <article
       class="relative p-4 bg-white h-full rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
     >
       <nuxt-img
         format="webp"
         class="mb-5 rounded-lg h-50 w-full object-cover"
-        :src="data.image"
-        :alt="data.title"
+        :src="media"
       />
       <span
-        v-for="(tag, index) in data.tags"
+        v-for="(tag, index) in data.attributes.category.data.attributes"
         :key="index"
         class="bg-blue-100 text-blue-400 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-purple-200 dark:text-purple-900"
       >{{ tag }}</span>
       <h2
         class="mt-2 mb-15 text-xl font-bold tracking-tight text-black-600 dark:text-white"
       >
-        {{ data.title }}
+        {{ data.attributes.title }}
       </h2>
       <div class="flex items-center space-x-4 absolute bottom-2">
         <nuxt-img
@@ -29,11 +28,11 @@
           <div>Air360 team</div>
           <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
             {{
-              dayjs(data.published)
+              dayjs(data.attributes.publishedAt)
                 .locale('en')
                 .format('D MMMM YYYY')
             }}
-            · {{ data.readingTime }} min
+            · {{ data.attributes.readingTime }} min
           </div>
         </div>
       </div>
@@ -47,8 +46,10 @@ import { BlogArticle } from '~~/interfaces/blog'
 
 const props = defineProps({
   data: {
-    type: Object as () => BlogArticle,
+    type: Object,
     required: true
   }
 })
+
+const media = useStrapiMedia(props.data.attributes.image.data.attributes.url)
 </script>
