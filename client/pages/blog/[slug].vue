@@ -100,10 +100,8 @@
                   </h1>
                   <nuxt-img format="webp" :src="media" class="h-90 mb-10 rounded-lg w-full object-cover" />
                 </header>
-                <div class="">
-                  <!-- <TableOfContents :paragraph-titles="paragraphTitles" class="lg:hidden" /> -->
-                  {{ article.attributes.content }}
-                </div>
+
+                <div v-html="article.attributes.content" />
               </article>
             </div>
           </div>
