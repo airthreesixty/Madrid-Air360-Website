@@ -26,25 +26,16 @@
         <p class="leading-7 text-black-600">
           {{ heroData.titleDescription }}
         </p>
-        <div class="pt-3 md:flex">
-          <!-- <NuxtLink :to="heroData.buttons[0].href" :target="heroData.buttons[0].target" class="text-white text-center bg-primary-600 text-base flex justify-center items-center font-bold w-full mt-5 inline-block transition ease-in-out duration-300 hover:bg-primary-700 rounded-lg px-6 py-3 mr-2 mb-2 md:w-1/2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-            {{ heroData.buttons[0].label }}
-          </NuxtLink> -->
-          <Button slug="/request-a-demo">
+        <div class="pt-3 md:flex md:gap-4">
+          <Button slug="/request-a-demo" class="mb-3 md:mb-0">
             Get Started
           </Button>
-          <!-- <a
-            href="#"
-            class="text-white bg-blue-400 text-base font-bold text-center flex justify-center items-center w-full mt-3 block transition ease-in-out duration-300 md:mt-5 hover:bg-blue-500 rounded-lg px-6 py-3 mb-2 md:w-1/2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-          >
-            {{ heroData.buttons[1].label }}
-          </a> -->
           <Button slug="#" variant="secondary">
             Watch our Video
           </Button>
         </div>
       </div>
-      <div class=" md:flex md:flex-1 lg:mt-0">
+      <div class="hidden md:flex md:flex-1 lg:mt-0">
         <nuxt-img
           :src="mediaHero"
           alt="Hero image"

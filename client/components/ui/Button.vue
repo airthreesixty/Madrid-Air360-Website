@@ -11,7 +11,7 @@ type variantStatus = 'primary' | 'secondary'
 
 const buttonVariants = computed(() => {
   return cva(
-    'text-center bg-primary-600 text-base flex justify-center items-center font-bold w-full mt-5 inline-block transition ease-in-out duration-300 hover:bg-primary-700 rounded-lg px-6 py-3 mr-2 mb-2 md:w-1/2 focus:outline-none',
+    'text-center bg-primary-600 text-base flex justify-center items-center font-bold w-full inline-block transition ease-in-out duration-300 hover:bg-primary-700 rounded-lg px-6 py-3 md:w-1/2 focus:outline-none',
     {
       variants: {
         variant: {

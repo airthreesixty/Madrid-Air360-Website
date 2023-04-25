@@ -63,12 +63,9 @@
             </NuxtLink>
           </li>
           <li class="py-2">
-            <NuxtLink
-              :to="headerData.button.href"
-              class="bg-primary-600 text-base text-white transition ease-in-out duration-300 hover:bg-primary-700 font-medium rounded-lg px-6 py-3 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-            >
+            <Button :to="headerData.button.href">
               {{ headerData.button.label }}
-            </NuxtLink>
+            </Button>
           </li>
         </ul>
       </div>
@@ -78,6 +75,7 @@
 
 <script setup lang="ts">
 import { gql } from 'graphql-tag'
+import Button from './ui/Button.vue'
 
 const graphql = useStrapiGraphQL()
 
