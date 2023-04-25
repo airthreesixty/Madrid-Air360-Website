@@ -8,6 +8,10 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en'
       }
+    },
+    pageTransition: {
+      name: 'slide-fade',
+      mode: 'in-out'
     }
   },
   algolia: {
