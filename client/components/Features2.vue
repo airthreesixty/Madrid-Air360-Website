@@ -13,9 +13,25 @@
 </template>
 
 <script setup lang="ts">
-import { features2Query } from '~~/graphql/queries'
+import { gql } from 'graphql-tag'
 
 const graphql = useStrapiGraphQL()
-const { data } = await graphql(features2Query)
-const features2Data = data.page.data.attributes.blocks[5]
+const { data } = await useAsyncData('features2', () =>
+  graphql(gql`
+query {
+  page(id:3) {
+data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksFeature2 {
+title
+          }
+        }
+      }
+    }
+  }
+}
+`)
+)
+const features2Data = computed(() => data.value.data.page.data.attributes.blocks[5])
 </script>

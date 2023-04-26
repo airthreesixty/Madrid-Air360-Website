@@ -44,17 +44,52 @@
 </template>
 
 <script setup lang="ts">
-import { accordionsQuery } from '~/graphql/queries'
+import { gql } from 'graphql-tag'
 
 const graphql = useStrapiGraphQL()
-const { data } = await graphql(accordionsQuery)
-const accordionData = data.page.data.attributes.blocks[6]
+const { data } = await useAsyncData(() =>
+  graphql(gql`
+query {
+  page(id:3) {
+data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksAccordionSection {
+title
+            bgImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+            accordion {
+              media {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
+              isVideo
+              title
+              subTitle
+              description
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`)
+)
 
-// create medias array using useStrapiMedia
-const medias = accordionData.accordion.map((accordion: { media: { data: { attributes: { url: string } } } }) => {
+const accordionData = computed(() => data.value.data.page.data.attributes.blocks[6])
+
+const medias = accordionData.value.accordion.map((accordion: { media: { data: { attributes: { url: string } } } }) => {
   return useStrapiMedia(accordion.media.data.attributes.url)
 })
 
-const bgImage = useStrapiMedia(accordionData.bgImage.data.attributes.url)
-console.log(bgImage)
+const bgImage = useStrapiMedia(accordionData.value.bgImage.data.attributes.url)
 </script>

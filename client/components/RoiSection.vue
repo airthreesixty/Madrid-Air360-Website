@@ -11,9 +11,9 @@
         <p class="mb-6 font-light text-gray-500 md:text-lg">
           {{ roiData.description }}
         </p>
-        <NuxtLink :to="roiData.button.href" :target="roiData.button.target" class="text-white text-center bg-primary-600 text-base flex justify-center items-center font-bold w-full mt-5 transition ease-in-out duration-300 hover:bg-primary-700 rounded-lg px-6 py-3 mr-2 mb-2 md:w-1/2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
+        <Button :to="roiData.button.href">
           {{ roiData.button.label }}
-        </NuxtLink>
+        </Button>
       </div>
     </div>
     <div class="py-5 pb-15 flex justify-center">
@@ -25,11 +25,44 @@
 </template>
 
 <script setup lang="ts">
-import { roiQuery } from '~~/graphql/queries'
+import { gql } from 'graphql-tag'
+import Button from './ui/Button.vue'
 
 const graphql = useStrapiGraphQL()
-const { data } = await graphql(roiQuery)
-const roiData = data.page.data.attributes.blocks[2]
-const media = useStrapiMedia(roiData.images.data[0].attributes.url)
-const bgMedia = useStrapiMedia(roiData.images.data[1].attributes.url)
+const { data } = await useAsyncData('roi', () =>
+  graphql(gql`
+  query {
+  page(id:3) {
+data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksRoi {
+            title
+            description
+            button {
+              href
+              label
+              isExternal
+              target
+            }
+            message
+                        images {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`)
+)
+
+const roiData = computed(() => data.value.data.page.data.attributes.blocks[2])
+const media = useStrapiMedia(roiData.value.images.data[0].attributes.url)
+const bgMedia = useStrapiMedia(roiData.value.images.data[1].attributes.url)
 </script>

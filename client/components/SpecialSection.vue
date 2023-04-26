@@ -12,12 +12,36 @@
 </template>
 
 <script setup lang="ts">
-import { specialQuery } from '~~/graphql/queries'
+import { gql } from 'graphql-tag'
 
 const graphql = useStrapiGraphQL()
-const { data } = await graphql(specialQuery)
-const specialData = data.page.data.attributes.blocks[4]
-const media = useStrapiMedia(specialData.image.data.attributes.url)
+const { data } = await useAsyncData('special-section', () =>
+  graphql(gql`
+query {
+  page(id:3) {
+data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksSpecial {
+            title
+            image {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`)
+)
+
+const specialData = computed(() => data.value.data.page.data.attributes.blocks[4])
+const media = useStrapiMedia(specialData.value.image.data.attributes.url)
 </script>
 
 <style scoped>

@@ -15,14 +15,32 @@
 </template>
 
 <script setup lang="ts">
-import { statisticsQuery } from '~~/graphql/queries'
+import { gql } from 'graphql-tag'
 
 const graphql = useStrapiGraphQL()
-const { data } = await graphql(statisticsQuery)
-const statisticsData = data.page.data.attributes.blocks[1]
+const { data } = await useAsyncData('statistics', () =>
+  graphql(gql`
+query {
+  page(id:3) {
+data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksStatistics {
+            quote 
+            source
+          }
+        }
+      }
+    }
+  }
+}
+`)
+)
+
+const statisticsData = computed(() => data.value.data.page.data.attributes.blocks[1])
 </script>
 
-<style>
+<style scoped>
 .triangle{
   border-right: 30px solid transparent;
   border-bottom: 40.6025px solid white;

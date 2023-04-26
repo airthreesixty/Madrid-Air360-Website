@@ -29,13 +29,38 @@
 </template>
 
 <script setup lang="ts">
-import { videoSectionQuery } from '~~/graphql/queries'
+import { gql } from 'graphql-tag'
 
 const graphql = useStrapiGraphQL()
-const { data } = await graphql(videoSectionQuery)
+const { data } = await useAsyncData('video-section', () =>
+  graphql(gql`
+query {
+  page(id:3) {
+    data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksVideoSection {
+            title
+            subTitle
+            description
+            bgImage {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`)
+)
 
-const videoSectionData = data.page.data.attributes.blocks[0]
-const bgImage = useStrapiMedia(videoSectionData.bgImage.data[0].attributes.url)
+const videoSectionData = computed(() => data.value.data.page.data.attributes.blocks[0])
+const bgImage = computed(() => useStrapiMedia(videoSectionData.value.bgImage.data[0].attributes.url))
 
 useHead({
   script: [
