@@ -138,9 +138,9 @@ const articlesData = data.articles.data
 const article = articlesData.find(art => art.attributes.href === route.fullPath)
 
 const media = useStrapiMedia(article.attributes.image.data.attributes.url)
-if (!data.value) {
-  router.push('/blog')
-}
+// if (!data.value) {
+//   router.push('/blog')
+// }
 // useSeoMeta({
 //   title: data.value?.title,
 //   ogTitle: data.value?.title,

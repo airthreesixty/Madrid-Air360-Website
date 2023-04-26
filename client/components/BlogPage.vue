@@ -11,14 +11,14 @@
           Inspiration for conversion heroes
         </p>
         <BlogTagsFilter />
-        <!-- <BlogSearchBar v-model="searchedArticles" /> -->
+        <BlogSearchBar v-model="searchedArticles" />
       </div>
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         <!-- <transition-group
           @before-enter="beforeEnter"
           @enter="enter"
         > -->
-        <BlogCard v-for="(article, index) in articles" :key="article.id" :data="article" :data-index="index" />
+        <BlogCard v-for="(article, index) in displayedArticles" :key="article.id" :data="article" :data-index="index" />
         <!-- </transition-group> -->
       </div>
       <div class="flex justify-center">
@@ -58,24 +58,24 @@ const props = defineProps({
 })
 // const isLoading = ref(false)
 
-// const numArticlesPerLoad = 6
-// const searchedArticles = ref<string[] | null>(null)
-// const articles = ref<BlogArticle[]>(props.articles)
-// const displayedArticles = ref<BlogArticle[]>(props.articles.slice(0, numArticlesPerLoad))
+const numArticlesPerLoad = 6
+const searchedArticles = ref<string[] | null>(null)
+const articles = ref(props.articles)
+const displayedArticles = ref(props.articles.slice(0, numArticlesPerLoad))
 
 // const canLoadMore = computed(() => {
 //   return displayedArticles.value.length < articles.value.length && searchedArticles.value === null
 // })
 
-// watch([searchedArticles, articles], () => {
-//   if (searchedArticles.value !== null) {
-//     displayedArticles.value = articles.value.filter(article => searchedArticles.value?.includes(article._path))
-//   } else {
-//     displayedArticles.value = articles.value.slice(0, numArticlesPerLoad)
-//   }
-// },
-// { immediate: true }
-// )
+watch([searchedArticles, articles], () => {
+  if (searchedArticles.value !== null) {
+    displayedArticles.value = articles.value.filter(article => searchedArticles.value?.includes(article._path))
+  } else {
+    displayedArticles.value = articles.value.slice(0, numArticlesPerLoad)
+  }
+},
+{ immediate: true }
+)
 
 // const loadMore = async () => {
 //   isLoading.value = true

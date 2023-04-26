@@ -1,3 +1,3 @@
 <template>
-  <div>Request a demo</div>
+  <RequestDemo />
 </template>
