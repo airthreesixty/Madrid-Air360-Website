@@ -21,15 +21,40 @@
   </section>
 </template>
 <script setup lang="ts">
-import { testimonialQuery } from '~~/graphql/queries'
+import { gql } from 'graphql-tag'
 
 const graphql = useStrapiGraphQL()
-const { data } = await graphql(testimonialQuery)
-const testimonialData = data.page.data.attributes.blocks[5]
+const { data } = await useAsyncData('testimonial', () =>
+  graphql(gql`
+query {
+  page(id:2) {
+    data {
+      attributes {
+        blocks {
+          ... on ComponentBlocksTestimonial {
+            quote
+            name
+            role
+            images {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`)
+)
 
-const mediaHeadShot = useStrapiMedia(testimonialData.images.data[0].attributes.url)
-const mediaLogo = useStrapiMedia(testimonialData.images.data[1].attributes.url)
-const mediaBg = useStrapiMedia(testimonialData.images.data[2].attributes.url)
+const testimonialData = computed(() => data.value.data.page.data.attributes.blocks[5])
+const mediaHeadShot = useStrapiMedia(testimonialData.value.images.data[0].attributes.url)
+const mediaLogo = useStrapiMedia(testimonialData.value.images.data[1].attributes.url)
+const mediaBg = useStrapiMedia(testimonialData.value.images.data[2].attributes.url)
 </script>
 
 <style lang="postcss">

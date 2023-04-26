@@ -14,13 +14,36 @@
 </template>
 
 <script setup lang="ts">
-import { companyLogosQuery } from '~~/graphql/queries'
+import { gql } from 'graphql-tag'
 
 const graphql = useStrapiGraphQL()
-const { data } = await graphql(companyLogosQuery)
-const companyLogosData = data.page.data.attributes.blocks[7]
+const { data } = await useAsyncData('company-logos', () =>
+  graphql(gql`
+query {
+page (id: 2) {
+data {
+      attributes {
+        blocks {
+... on ComponentBlocksCompanyLogos {
+            title 
+            logos {
+              data {
+                attributes {
+                  url
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`)
+)
+const companyLogosData = computed(() => data.value.data.page.data.attributes.blocks[7])
 
-const logos = companyLogosData.logos.data.map((logo: { attributes: { url: string } }) => {
+const logos = companyLogosData.value.logos.data.map((logo: { attributes: { url: string } }) => {
   return useStrapiMedia(logo.attributes.url)
 })
 
