@@ -28,6 +28,19 @@ export default defineConfig({
         gray: {
           600: '#FAFAFA'
         }
+      },
+      typography: {
+        DEFAULT: {
+          css: {
+            p: {
+              a: {
+                'text-decoration': 'none',
+                color: '#6278DF'
+              }
+            },
+            color: '#232e4a'
+          }
+        }
       }
     }
   }

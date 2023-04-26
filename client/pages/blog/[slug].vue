@@ -101,7 +101,7 @@
                   <nuxt-img format="webp" :src="media" class="h-90 mb-10 rounded-lg w-full object-cover" />
                 </header>
 
-                <div v-html="article.attributes.content" />
+                <div class="prose" v-html="article.attributes.content" />
               </article>
             </div>
           </div>
@@ -138,12 +138,9 @@ const articlesData = data.articles.data
 const article = articlesData.find(art => art.attributes.href === route.fullPath)
 
 const media = useStrapiMedia(article.attributes.image.data.attributes.url)
-console.log(articlesData)
-// console.log(fullPath)
-console.log(article)
-// if (!data.value) {
-//   router.push('/blog')
-// }
+if (!data.value) {
+  router.push('/blog')
+}
 // useSeoMeta({
 //   title: data.value?.title,
 //   ogTitle: data.value?.title,

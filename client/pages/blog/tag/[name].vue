@@ -1,15 +1,50 @@
 <template>
   <main>
-    <BlogPage :articles="data" />
+    <BlogPage :articles="articles" />
   </main>
 </template>
 
 <script setup lang="ts">
+import { gql } from 'graphql-tag'
+
+const graphql = useStrapiGraphQL()
 const route = useRoute()
 const router = useRouter()
 
-// TODO the value from the plugin is wrong, remove _value when it's fixed
-const { data } = await useAsyncData(`tag-${route.params.name}`, () => queryContent('blog').where({ tags: { $contains: route.params.name } }).sort({ published: -1 }).only(['published', 'tags', 'readingTime', 'title', 'image', '_path', 'metaDesc']).find())
+const { data } = await useAsyncData(`tag-${route.params.name}`, () =>
+  graphql(gql`
+query {
+articles {
+    data {
+      id
+      attributes {
+        publishedAt
+        readingTime
+        title
+        content
+        href
+        category {
+data {
+            attributes {
+              title
+            }
+          }
+        }
+        image {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`)
+)
+
+const articles = data.value.data.articles.data.filter(article => article.attributes.category.data.attributes.title === route.params.name)
 
 if (!data.value) {
   router.push('/blog')

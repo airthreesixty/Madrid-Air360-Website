@@ -91,5 +91,5 @@ const medias = accordionData.value.accordion.map((accordion: { media: { data: { 
   return useStrapiMedia(accordion.media.data.attributes.url)
 })
 
-const bgImage = useStrapiMedia(accordionData.value.bgImage.data.attributes.url)
+const bgImage = computed(() => useStrapiMedia(accordionData.value.bgImage.data.attributes.url))
 </script>
