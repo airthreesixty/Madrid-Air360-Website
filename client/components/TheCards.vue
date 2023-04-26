@@ -1,7 +1,7 @@
 <template>
   <section class="bg-white px-5 dark:bg-gray-900">
     <div class="py-8 px-5 mx-auto max-w-screen-[1400px] lg:py-16 lg:px-6">
-      <div v-if="show" class="px-6 md:px-10 text-center mb-15 lg:mb-16">
+      <div class="px-6 md:px-10 text-center mb-15 lg:mb-16">
         <h2 class="mt-10 text-2xl tracking-wide md:text-4xl font-bold lg:px-20 text-black-700 dark:text-white">
           {{ cardData.title }}
         </h2>
@@ -67,30 +67,30 @@
   </section>
 </template>
 
-<script setup>
-import gsap from 'gsap'
-import { cardsQuery } from '~~/graphql/queries'
+<script setup lang="ts">
+import { gql } from 'graphql-tag'
+
 const graphql = useStrapiGraphQL()
-const { data } = await graphql(cardsQuery)
-const cardData = data.page.data.attributes.blocks[1]
-const show = ref(false)
 
-onMounted(() => {
-  show.value = true
-})
-
-const beforeEnter = (el) => {
-  el.style.opacity = '0'
-  el.style.transform = 'translateY(100px)'
-}
-
-const enter = (el, done) => {
-  console.log('enter')
-  gsap.to(el, {
-    opacity: 1,
-    y: 0,
-    duration: 1.5,
-    onComplete: done
-  })
-}
+const { data } = await useAsyncData('cards', () =>
+  graphql(gql`
+    query {
+      page (id: 2) {
+        data {
+          attributes {
+            blocks {
+              ... on ComponentBlocksPanel{
+                title
+                cards {
+                  description
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+)
+const cardData = computed(() => data.value.data.page.data.attributes.blocks[1])
 </script>

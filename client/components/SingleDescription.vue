@@ -34,7 +34,6 @@
         </p>
         <div
           class="max-w-2xl mb-6 font-light tracking-wide lg:mb-8 md:text-lg lg:text-xl"
-          :class="textDescriptionColor"
           v-html="description"
         />
       </div>
@@ -80,10 +79,6 @@ const props = defineProps({
     default: 'text-black-700'
   },
   textSubTitleColor: {
-    type: String,
-    default: 'text-black-600'
-  },
-  textDescriptionColor: {
     type: String,
     default: 'text-black-600'
   },
