@@ -6485,6 +6485,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"libphonenumber-js@npm:^1.10.12":
+  version: 1.10.28
+  resolution: "libphonenumber-js@npm:1.10.28"
+  checksum: 3a3aac653265751822b495d30c1196a072c52612fb2b7cf0efe38b0ad25a48df2a0bf2220fb7066af1a1734b9cd9ba78ddaf758da5194422bbb57c4c592c381a
+  languageName: node
+  linkType: hard
+
 "lilconfig@npm:^2.0.5, lilconfig@npm:^2.0.6, lilconfig@npm:^2.1.0":
   version: 2.1.0
   resolution: "lilconfig@npm:2.1.0"
@@ -9615,6 +9622,7 @@ __metadata:
     typescript: ^4.9.5
     vue-i18n: ^9.2.2
     vue-loading-overlay: ^6.0.3
+    vue-tel-input: ^8.1.1
   languageName: unknown
   linkType: soft
 
@@ -11383,6 +11391,16 @@ __metadata:
   peerDependencies:
     vue: ^3.2.0
   checksum: c7f0156ac03a9561d110f5ff778121eee7c8c154be6ec5064558ba22ab5237db36f29ffffc95cc16d692cc68a26df0c434f395401c0e3b48f782c7bed51391c6
+  languageName: node
+  linkType: hard
+
+"vue-tel-input@npm:^8.1.1":
+  version: 8.1.1
+  resolution: "vue-tel-input@npm:8.1.1"
+  dependencies:
+    libphonenumber-js: ^1.10.12
+    vue: ^3.2.47
+  checksum: 2152ead0c121e4dae8e0263c0a1f7cddb5b3f8e24074ca59bfff9e7d14ed0172722ab52bfbcda0a7e9310b20935268bf06595f7ef3db6d738d0947dcbbbbe608
   languageName: node
   linkType: hard
 
