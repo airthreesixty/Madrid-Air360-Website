@@ -59,12 +59,12 @@ const props = defineProps({
   }
 })
 const isLoading = ref(false)
+let loadButtonClickCount = 0
 
 const numArticlesPerLoad = 6
 const searchedArticles = ref<string[] | null>(null)
 const articles = ref(props.articles)
 const displayedArticles = ref(props.articles.slice(0, numArticlesPerLoad))
-console.log(articles)
 
 const canLoadMore = computed(() => {
   return displayedArticles.value.length < articles.value.length && searchedArticles.value === null
@@ -82,6 +82,7 @@ watch([searchedArticles, articles], () => {
 
 const loadMore = async () => {
   isLoading.value = true
+  loadButtonClickCount++
   const currentPage = Number(route.query.page) || 0
   await navigateTo({
     path: '/blog',
@@ -113,7 +114,7 @@ const enter = (el: Element, done: () => void) => {
       y: 0,
       duration: 0.8,
       onComplete: done,
-      delay: (index - 6) * 0.2
+      delay: (index - (6 * loadButtonClickCount)) * 0.2
     })
   }
 }
