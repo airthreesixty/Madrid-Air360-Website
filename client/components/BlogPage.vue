@@ -14,30 +14,31 @@
         <BlogSearchBar v-model="searchedArticles" />
       </div>
       <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <!-- <transition-group
+        <transition-group
           @before-enter="beforeEnter"
           @enter="enter"
-        > -->
-        <BlogCard v-for="(article, index) in displayedArticles" :key="article.id" :data="article" :data-index="index" />
-        <!-- </transition-group> -->
+        >
+          <BlogCard v-for="(article, index) in displayedArticles" :key="article.id" :data="article" :data-index="index" />
+        </transition-group>
       </div>
       <div class="flex justify-center">
-        <!-- <button
-          v-if="canLoadMore"
-          class="text-gray-500 bg-white w-[178px] h-[50px] flex justify-center border-gray-200 border text-base font-bold mt-16 mb-0 inline-block transition ease-in-out duration-300 rounded-lg px-6 py-3 mb-2 focus:outline-none"
-          @click="loadMore"
-        >
-          <div v-if="!isLoading">
-            Load More
-          </div>
-          <Loading v-if="isLoading" class="w-20 h-5" :is-full-page="false" />
-        </button>
-      </div> -->
-        <div v-if="!articles.length">
-          <p class="text-center text-black-600">
-            No articles found
-          </p>
+        <div>
+          <Button
+            v-if="canLoadMore"
+            class="mt-16"
+            @click="loadMore"
+          >
+            <div v-if="!isLoading">
+              Load More
+            </div>
+            <Loading v-if="isLoading" class="w-20 h-5" :is-full-page="false" />
+          </Button>
         </div>
+      </div>
+      <div v-if="!articles.length">
+        <p class="text-center text-black-600">
+          No articles found
+        </p>
       </div>
     </div>
   </section>
@@ -47,6 +48,7 @@
 // @ts-ignore
 import _ from 'lodash'
 import gsap from 'gsap'
+import Button from './ui/Button.vue'
 import { BlogArticle } from '~~/interfaces/blog'
 
 const route = useRoute()
@@ -56,16 +58,17 @@ const props = defineProps({
     required: true
   }
 })
-// const isLoading = ref(false)
+const isLoading = ref(false)
 
 const numArticlesPerLoad = 6
 const searchedArticles = ref<string[] | null>(null)
 const articles = ref(props.articles)
 const displayedArticles = ref(props.articles.slice(0, numArticlesPerLoad))
+console.log(articles)
 
-// const canLoadMore = computed(() => {
-//   return displayedArticles.value.length < articles.value.length && searchedArticles.value === null
-// })
+const canLoadMore = computed(() => {
+  return displayedArticles.value.length < articles.value.length && searchedArticles.value === null
+})
 
 watch([searchedArticles, articles], () => {
   if (searchedArticles.value !== null) {
@@ -77,41 +80,41 @@ watch([searchedArticles, articles], () => {
 { immediate: true }
 )
 
-// const loadMore = async () => {
-//   isLoading.value = true
-//   const currentPage = Number(route.query.page) || 0
-//   await navigateTo({
-//     path: '/blog',
-//     query: {
-//       page: currentPage + 1
-//     }
-//   })
-//   _.debounce(() => {
-//     const currentArticlesCount = displayedArticles.value.length
-//     const newArticles = articles.value.slice(
-//       currentArticlesCount,
-//       currentArticlesCount + numArticlesPerLoad
-//     )
-//     displayedArticles.value.push(...newArticles)
-//     isLoading.value = false
-//   }, 300)()
-// }
+const loadMore = async () => {
+  isLoading.value = true
+  const currentPage = Number(route.query.page) || 0
+  await navigateTo({
+    path: '/blog',
+    query: {
+      page: currentPage + 1
+    }
+  })
+  _.debounce(() => {
+    const currentArticlesCount = displayedArticles.value.length
+    const newArticles = articles.value.slice(
+      currentArticlesCount,
+      currentArticlesCount + numArticlesPerLoad
+    )
+    displayedArticles.value.push(...newArticles)
+    isLoading.value = false
+  }, 300)()
+}
 
-// const beforeEnter = (el: Element) => {
-//   (el as HTMLElement).style.opacity = '0';
-//   (el as HTMLElement).style.transform = 'translateY(100px)'
-// }
+const beforeEnter = (el: Element) => {
+  (el as HTMLElement).style.opacity = '0';
+  (el as HTMLElement).style.transform = 'translateY(100px)'
+}
 
-// const enter = (el: Element, done: () => void) => {
-//   if (el instanceof HTMLElement && el.dataset.index) {
-//     const index = Number(el.dataset.index)
-//     gsap.to(el, {
-//       opacity: 1,
-//       y: 0,
-//       duration: 0.8,
-//       onComplete: done,
-//       delay: (index - 6) * 0.2
-//     })
-//   }
-// }
+const enter = (el: Element, done: () => void) => {
+  if (el instanceof HTMLElement && el.dataset.index) {
+    const index = Number(el.dataset.index)
+    gsap.to(el, {
+      opacity: 1,
+      y: 0,
+      duration: 0.8,
+      onComplete: done,
+      delay: (index - 6) * 0.2
+    })
+  }
+}
 </script>

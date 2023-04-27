@@ -51,7 +51,5 @@ const props = defineProps({
   }
 })
 
-console.log(props.data.attributes.href)
-
 const media = computed(() => useStrapiMedia(props.data.attributes.image.data.attributes.url))
 </script>

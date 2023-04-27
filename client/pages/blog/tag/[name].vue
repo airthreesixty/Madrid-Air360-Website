@@ -14,7 +14,7 @@ const router = useRouter()
 const { data } = await useAsyncData(`tag-${route.params.name}`, () =>
   graphql(gql`
 query {
-articles {
+articles(sort: "publishedAt:desc", pagination: { limit: 100 }) {
     data {
       id
       attributes {

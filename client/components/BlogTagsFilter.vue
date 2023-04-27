@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-const tagList = ['marketing', 'ux', 'ecommerce', 'data', 'other']
+const tagList = ['marketing', 'ux', 'e-commerce', 'data', 'other']
 </script>
 
 <style scoped lang="postcss">

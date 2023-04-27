@@ -117,27 +117,48 @@
 <script setup lang="ts">
 // import { useSeoMeta } from '@unhead/vue'
 import dayjs from 'dayjs'
-import { BlogArticle } from '~~/interfaces/blog'
-import { articlesQuery } from '~/graphql/queries'
+import { gql } from 'graphql-tag'
 
 const route = useRoute()
 const router = useRouter()
-const fullPath = route.fullPath
 
-// TODO the value from the plugin is wrong, remove _value when it's fixed
-// const { data } = await useAsyncData(`blog-${route.params.slug}`, () =>
-//   queryContent<BlogArticle>(
-//     `${(route.path)}`
-//   ).findOne()
-// )
-// console.log(data)
-// const paragraphTitles = data._rawValue.body.toc.links
 const graphql = useStrapiGraphQL()
-const { data } = await graphql(articlesQuery)
-const articlesData = data.articles.data
+const { data } = await useAsyncData('all-articles', () =>
+  graphql(gql`
+query {
+articles(sort: "publishedAt:desc", pagination: { limit: 100 }) {
+    data {
+      id
+      attributes {
+        publishedAt
+        readingTime
+        title
+        content
+        href
+        category {
+data {
+            attributes {
+              title
+            }
+          }
+        }
+        image {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+      }
+    }
+  }
+}
+`)
+)
+const articlesData = data.value.data.articles.data
 const article = articlesData.find(art => art.attributes.href === route.fullPath)
 
-const media = useStrapiMedia(article.attributes.image.data.attributes.url)
+const media = computed(() => useStrapiMedia(article.attributes.image.data.attributes.url))
 // if (!data.value) {
 //   router.push('/blog')
 // }

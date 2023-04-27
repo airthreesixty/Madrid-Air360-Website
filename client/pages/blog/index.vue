@@ -12,7 +12,7 @@ const graphql = useStrapiGraphQL()
 const { data } = await useAsyncData('all-articles', () =>
   graphql(gql`
 query {
-articles {
+articles(sort: "publishedAt:desc", pagination: { limit: 100 }) {
     data {
       id
       attributes {
@@ -43,4 +43,5 @@ data {
 )
 
 const articlesData = computed(() => data.value.data.articles.data)
+console.log(data)
 </script>

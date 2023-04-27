@@ -31,12 +31,6 @@
         "audios"
       ]
     },
-    "category": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::category.category",
-      "inversedBy": "articles"
-    },
     "readingTime": {
       "type": "integer",
       "required": true
@@ -45,6 +39,12 @@
       "type": "string",
       "default": "/blog/",
       "required": true
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "articles"
     }
   }
 }
