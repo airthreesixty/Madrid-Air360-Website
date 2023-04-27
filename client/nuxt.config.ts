@@ -14,6 +14,10 @@ export default defineNuxtConfig({
       mode: 'in-out'
     }
   },
+  recaptcha: {
+    version: 3
+
+  },
   algolia: {
     apiKey: process.env.ALGOLIA_SEARCH_API_KEY,
     applicationId: process.env.ALGOLIA_APPLICATION_ID,

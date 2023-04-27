@@ -50,7 +50,7 @@ watch(filterText, (value) => {
   _.debounce(async () => {
     if (value) {
       await search({ query: value })
-      emit('update:modelValue', result.value.hits.map(h => `/${h.lang}/blog/${h.slug}`))
+      emit('update:modelValue', result.value.hits.map(h => `/blog/${h.slug}/`))
     } else {
       emit('update:modelValue', null)
     }

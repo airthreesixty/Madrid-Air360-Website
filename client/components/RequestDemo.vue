@@ -1,7 +1,7 @@
 <template>
   <section class="flex justify-center">
     <div class="flex flex-col max-w-screen-[1400px] md:flex-row">
-      <div class="px-5 flex-1 md:p-8 lg:p-10">
+      <div class="p-4 flex-1 md:p-8 lg:p-10">
         <div class="flex justify-center">
           <nuxt-img src="https://air360.io/wp-content/uploads/2023/02/get-started.webp" class="w-100" alt="" />
         </div>
@@ -179,7 +179,7 @@ const submitForm = async () => {
     // @ts-ignore
     // Air360.identify(formData.email)
     console.log('Hello')
-    toast.success('Form was successfully submitted!', {
+    toast.success('The form was successfully submitted!', {
       timeout: 3000
     })
     // loading.value = false

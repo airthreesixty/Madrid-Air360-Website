@@ -43,5 +43,4 @@ data {
 )
 
 const articlesData = computed(() => data.value.data.articles.data)
-console.log(data)
 </script>
