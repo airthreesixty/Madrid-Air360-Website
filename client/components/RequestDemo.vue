@@ -1,49 +1,59 @@
 <template>
-  <section>
-    <div class="flex flex-col md:flex-row">
-      <div class="px-5 flex-1 md:p-8">
-        <img src="https://air360.io/wp-content/uploads/2023/02/get-started.webp" class="w-100" alt="">
-        <h1 class="text-center text-black-700 font-bold tracking-wide text-2xl md:text-4xl my-4">
-          Let's Get Started
-        </h1>
-        <p class="text-black-600 tracking-wide leading-7">
-          Learn how Air360 can help you increase your conversion by 50% in less than 3 months.
-          <br>
-          Our eCommerce experience analytics platform helps you spot all opportunities to increase conversion & prioritize decisions to boost revenue fast.
-          <br>
-          Fill out the short form and book a quick call with a CRO expert so we can tailor our Air360 offer to your needs.
-        </p>
+  <section class="flex justify-center">
+    <div class="flex flex-col max-w-screen-[1400px] md:flex-row">
+      <div class="px-5 flex-1 md:p-8 lg:p-10">
+        <div class="flex justify-center">
+          <nuxt-img src="https://air360.io/wp-content/uploads/2023/02/get-started.webp" class="w-100" alt="" />
+        </div>
+        <div class="">
+          <h1 class="text-center text-black-700 font-bold tracking-wide text-2xl md:text-4xl my-4">
+            Let's Get Started
+          </h1>
+          <p class="text-black-600 tracking-wide leading-7">
+            Learn how Air360 can help you increase your conversion by 50% in less than 3 months.
+            <br>
+            Our eCommerce experience analytics platform helps you spot all opportunities to increase conversion & prioritize decisions to boost revenue fast.
+            <br>
+            Fill out the short form and book a quick call with a CRO expert so we can tailor our Air360 offer to your needs.
+          </p>
+        </div>
         <div class="line-deco flex items-center py-[15px]">
           <span class="text-black-600 flex-shrink-0 mx-2.5">Trusted by</span>
         </div>
         <img src="https://air360.io/wp-content/uploads/2023/02/air360-customer-logos.svg" alt="">
       </div>
       <div class="form-bg-color py-16 md:flex-1 dark:bg-gray-900">
-        <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+        <div class="py-8 lg:py-16 px-4 lg:px-5 mx-auto max-w-screen-md">
           <div class="flex justify-end">
             <nuxt-img src="https://air360.io/wp-content/uploads/2023/02/air360-logo-horizontal-white.svg" class="w-23" />
           </div>
-          <form action="#" class="bg-white p-2.5 mt-8 lg:grid lg:grid-cols-2 lg:gap-6 lg:p-5">
+          <form action="#" class="bg-white p-2.5 mt-8 lg:grid lg:grid-cols-2 lg:gap-6 lg:p-5" @submit.prevent="submitForm">
             <div>
               <label for="firstName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">First name</label>
-              <input id="firstName" type="text" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
+              <input id="firstName" type="text" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light">
             </div>
             <div>
               <label for="lastName" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Last name</label>
-              <input id="lastName" type="text" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
+              <input id="lastName" type="text" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light">
             </div>
 
             <div class="col-span-2">
               <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email<span class="text-red-500">*</span></label>
-              <input id="email" type="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
+              <input id="email" v-model="formData.email" type="email" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light">
+              <span v-if="v$.email.$error" class="error-alert">
+                {{ v$.email.$errors[0].$message }}
+              </span>
             </div>
             <div>
               <label for="company" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Company name<span class="text-red-500">*</span></label>
-              <input id="company" type="text" class="block p-3 w-full text-sm text-black-700 bg-gray-50 rounded-lg border border-gray-300 shadow-sm  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light" required>
+              <input id="company" v-model="formData.company" type="text" class="block p-3 w-full text-sm text-black-700 bg-gray-50 rounded-lg border border-gray-300 shadow-sm  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 dark:shadow-sm-light">
+              <span v-if="v$.company.$error" class="error-alert">
+                {{ v$.company.$errors[0].$message }}
+              </span>
             </div>
             <div>
               <label for="sessions" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Yearly sessions<span class="text-red-500">*</span></label>
-              <select id="sessions" name="sessions" class="block p-3 w-full text-sm font-medium text-black-700 bg-gray-50 rounded-lg border-gray-300 shadow-sm" required>
+              <select id="sessions" v-model="formData.sessions" name="sessions" class="block p-3 w-full text-sm font-medium text-black-700 bg-gray-50 rounded-lg border-gray-300 shadow-sm">
                 <option disabled value>
                   Please Select
                 </option>
@@ -57,10 +67,13 @@
                   +1,000,000 Yearly
                 </option>
               </select>
+              <span v-if="v$.sessions.$error" class="error-alert">
+                {{ v$.sessions.$errors[0].$message }}
+              </span>
             </div>
             <div class="lg:col-span-2">
               <label for="goal" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">What is your website's conversion goal?<span class="text-red-500">*</span></label>
-              <select id="goal" name="goal" class="block p-3 w-full text-sm font-medium text-black-700 bg-gray-50 rounded-lg border-gray-300 shadow-sm" required>
+              <select id="goal" v-model="formData.goal" name="goal" class="block p-3 w-full text-sm font-medium text-black-700 bg-gray-50 rounded-lg border-gray-300 shadow-sm">
                 <option disabled value>
                   Please Select
                 </option>
@@ -74,17 +87,23 @@
                   None of the above
                 </option>
               </select>
+              <span v-if="v$.goal.$error" class="error-alert">
+                {{ v$.goal.$errors[0].$message }}
+              </span>
             </div>
             <div class="lg:col-span-2">
               <label for="tel" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Phone Number<span class="text-red-500">*</span></label>
-              <vue-tel-input v-model="phone" mode="international" required />
+              <vue-tel-input v-model="formData.phone" mode="international" />
+              <span v-if="v$.phone.$error" class="error-alert">
+                {{ v$.phone.$errors[0].$message }}
+              </span>
             </div>
             <div class="flex items-center lg:col-span-2">
-              <input id="checkbox" type="checkbox" class="rounded-sm focus:ring-0" required>
+              <input id="checkbox" v-model="formData.term" type="checkbox" class="rounded-sm focus:ring-0">
               <label for="checkbox" class="ml-2 text-black-600">I agree to receive other communications from ESW.</label>
             </div>
             <div class="flex justify-center my-7 lg:col-span-2">
-              <button type="button" class="py-3 px-6 text-base bg-[#e72192] tracking-wide font-medium text-center text-white rounded-[3px] bg-primary-700 sm:w-fit hover:bg-primary-800 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+              <button type="submit" class="py-3 px-6 text-base bg-[#e72192] tracking-wide font-medium text-center text-white rounded-[3px] bg-primary-700 sm:w-fit hover:bg-primary-800 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                 Submit
               </button>
             </div>
@@ -104,10 +123,69 @@
 
 <script setup lang="ts">
 import 'vue-tel-input/vue-tel-input.css'
-const phone = ref(null)
+import { useVuelidate } from '@vuelidate/core'
+import { required, email } from '@vuelidate/validators'
+
+const loading = ref(false)
+
+const formData = reactive({
+  email: '',
+  company: '',
+  sessions: null,
+  goal: null,
+  phone: '',
+  term: false
+})
+
+const rules = computed(() => {
+  return {
+    company: {
+      required
+    },
+    email: {
+      required,
+      email
+    },
+    sessions: {
+      required
+    },
+    goal: {
+      required
+    },
+    phone: {
+      required
+    }
+  }
+})
+
+const v$ = useVuelidate(rules, formData)
+
+// const isFormValid = computed(() => {
+//   if (formData.email && formData.company && formData.sessions && formData.goal && formData.phone && formData.term) {
+//     return true
+//   } else {
+//     return false
+//   }
+// })
+const submitForm = async () => {
+  console.log(formData)
+  const isFormCorrect = await v$.value.$validate()
+  if (isFormCorrect) {
+    // loading.value = true
+    // await axios.post('https://api.form-data.com/f/gq31layf9m65mw704tcnmm', formData)
+    // @ts-ignore
+    // Air360.identify(formData.email)
+    console.log('Hello')
+    // loading.value = false
+    // isSuccess.value = !isSuccess.value
+    // v$.value.$reset()
+    // Object.assign(formData, { firstName: '', lastName: '', email: '', company: '', sessions: null, goal: null, phone: null, terms: false })
+  }
+  console.log('No')
+}
 </script>
 
-<style>
+<style lang="postcss">
 .line-deco::before, .line-deco::after {
     display: block;
     content: '';
@@ -129,5 +207,8 @@ const phone = ref(null)
     border-radius: 0 8px 8px 0;
     padding-top: 11px;
     padding-bottom: 11px;
+}
+.error-alert {
+  @apply text-xs text-red-500;
 }
 </style>
