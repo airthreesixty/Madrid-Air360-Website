@@ -45,7 +45,8 @@
     "gsap": "^3.11.5",
     "vue-i18n": "^9.2.2",
     "vue-loading-overlay": "^6.0.3",
-    "vue-tel-input": "^8.1.1"
+    "vue-tel-input": "^8.1.1",
+    "vue-toastification": "next"
   },
   "packageManager": "yarn@3.5.0"
 }

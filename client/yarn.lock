@@ -9623,6 +9623,7 @@ __metadata:
     vue-i18n: ^9.2.2
     vue-loading-overlay: ^6.0.3
     vue-tel-input: ^8.1.1
+    vue-toastification: next
   languageName: unknown
   linkType: soft
 
@@ -11401,6 +11402,15 @@ __metadata:
     libphonenumber-js: ^1.10.12
     vue: ^3.2.47
   checksum: 2152ead0c121e4dae8e0263c0a1f7cddb5b3f8e24074ca59bfff9e7d14ed0172722ab52bfbcda0a7e9310b20935268bf06595f7ef3db6d738d0947dcbbbbe608
+  languageName: node
+  linkType: hard
+
+"vue-toastification@npm:next":
+  version: 2.0.0-rc.5
+  resolution: "vue-toastification@npm:2.0.0-rc.5"
+  peerDependencies:
+    vue: ^3.0.2
+  checksum: 358ac0eb8f40b1bbadc84c5a686d80c9fd7d6c37a3cec0c3a422f1157f4aa8a882e585404fe4efb7ac4ae52d627c65a30750b31425d7df1d6643f0c80ffcd668
   languageName: node
   linkType: hard
 

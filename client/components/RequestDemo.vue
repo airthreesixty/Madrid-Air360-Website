@@ -123,10 +123,13 @@
 
 <script setup lang="ts">
 import 'vue-tel-input/vue-tel-input.css'
+import 'vue-toastification/dist/index.css'
 import { useVuelidate } from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
+import { useToast } from 'vue-toastification'
 
 const loading = ref(false)
+const toast = useToast()
 
 const formData = reactive({
   email: '',
@@ -176,12 +179,17 @@ const submitForm = async () => {
     // @ts-ignore
     // Air360.identify(formData.email)
     console.log('Hello')
+    toast.success('Form was successfully submitted!', {
+      timeout: 3000
+    })
     // loading.value = false
     // isSuccess.value = !isSuccess.value
     // v$.value.$reset()
     // Object.assign(formData, { firstName: '', lastName: '', email: '', company: '', sessions: null, goal: null, phone: null, terms: false })
   }
-  console.log('No')
+  toast.error('Failed to submit the form.', {
+    timeout: 3000
+  })
 }
 </script>
 
